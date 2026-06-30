@@ -1,0 +1,2135 @@
+2026-06-30 08:12:54 - INFO - ============================================================
+2026-06-30 08:12:54 - INFO - 开始 Fast People Search 自动化查询
+2026-06-30 08:12:54 - INFO - ============================================================
+2026-06-30 08:12:54 - INFO - 正在连接 NORDVPN...
+2026-06-30 08:12:54 - ERROR - ✗ 未找到 NordVPN CLI，请先安装 NordVPN
+2026-06-30 08:12:54 - ERROR - ✗ NORDVPN 连接失败
+2026-06-30 08:12:54 - ERROR - VPN连接失败，程序退出
+2026-06-30 08:12:54 - INFO - 
+正在清理资源...
+2026-06-30 08:12:54 - ERROR - ✗ NordVPN 断开错误: [WinError 2] 系统找不到指定的文件。
+2026-06-30 08:12:54 - INFO - ✓ 清理完成
+2026-06-30 08:12:54 - INFO - ============================================================
+2026-06-30 08:14:40 - INFO - ============================================================
+2026-06-30 08:14:40 - INFO - 开始 Fast People Search 自动化查询
+2026-06-30 08:14:40 - INFO - ============================================================
+2026-06-30 08:14:40 - INFO - 正在连接 NORDVPN...
+2026-06-30 08:14:42 - INFO - ✓ NordVPN 已连接
+2026-06-30 08:14:44 - INFO - ✓ NORDVPN 已连接
+2026-06-30 08:14:44 - INFO - 测试VPN连接...
+2026-06-30 08:14:44 - DEBUG - Starting new HTTPS connection (1): api.ipify.org:443
+2026-06-30 08:14:45 - DEBUG - https://api.ipify.org:443 "GET /?format=json HTTP/1.1" 200 23
+2026-06-30 08:14:45 - INFO - ✓ 连接测试成功，当前IP: 216.245.152.41
+2026-06-30 08:14:45 - INFO - ✓ 读取了 11 个电话号码
+2026-06-30 08:14:45 - INFO - 
+[1/11] 正在查询: ﻿# 在此输入电话号码，每行一个
+2026-06-30 08:14:45 - INFO - 等待 3.5 秒...
+2026-06-30 08:14:48 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:14:48 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:15:01 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:15:01 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:01 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:15:01 - DEBUG - Output: ""
+2026-06-30 08:15:01 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:15:01 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:15:01 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:15:01 - DEBUG - Discovering versions from https://googlechromelabs.github.io/chrome-for-testing/known-good-versions-with-downloads.json
+2026-06-30 08:15:01 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:15:01 - DEBUG - Downloading chromedriver 149.0.7827.155 from https://storage.googleapis.com/chrome-for-testing-public/149.0.7827.155/win64/chromedriver-win64.zip
+2026-06-30 08:15:01 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:01 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:01 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:01 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 17680
+2026-06-30 08:15:01 - DEBUG - POST http://localhost:49637/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:15:01 - DEBUG - Starting new HTTP connection (1): localhost:49637
+2026-06-30 08:15:02 - DEBUG - http://localhost:49637 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:15:02 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:15:02 - DEBUG - Finished Request
+2026-06-30 08:15:04 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:04 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:08 - WARNING - ⚠ 未找到结果
+2026-06-30 08:15:08 - INFO - 
+[2/11] 正在查询: 19545315551
+2026-06-30 08:15:08 - INFO - 等待 4.9 秒...
+2026-06-30 08:15:13 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:15:13 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:15:13 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:15:13 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:13 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:15:13 - DEBUG - Output: ""
+2026-06-30 08:15:13 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:15:13 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:15:13 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:15:13 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:15:13 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:15:13 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:13 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:13 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:13 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 4504
+2026-06-30 08:15:13 - DEBUG - POST http://localhost:52256/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:15:13 - DEBUG - Starting new HTTP connection (1): localhost:52256
+2026-06-30 08:15:14 - DEBUG - http://localhost:52256 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:15:14 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:15:14 - DEBUG - Finished Request
+2026-06-30 08:15:16 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:16 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:20 - WARNING - ⚠ 未找到结果
+2026-06-30 08:15:20 - INFO - 
+[3/11] 正在查询: 19545984714
+2026-06-30 08:15:20 - INFO - 等待 3.2 秒...
+2026-06-30 08:15:23 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:15:23 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:15:23 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:15:23 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:23 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:15:23 - DEBUG - Output: ""
+2026-06-30 08:15:23 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:15:23 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:15:23 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:15:23 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:15:23 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:15:23 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:23 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:23 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:23 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 12564
+2026-06-30 08:15:24 - DEBUG - POST http://localhost:62130/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:15:24 - DEBUG - Starting new HTTP connection (1): localhost:62130
+2026-06-30 08:15:24 - DEBUG - http://localhost:62130 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:15:24 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:15:24 - DEBUG - Finished Request
+2026-06-30 08:15:26 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:26 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:30 - WARNING - ⚠ 未找到结果
+2026-06-30 08:15:30 - INFO - 
+[4/11] 正在查询: 19706180046
+2026-06-30 08:15:30 - INFO - 等待 2.2 秒...
+2026-06-30 08:15:32 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:15:32 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:15:33 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:15:33 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:33 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:15:33 - DEBUG - Output: ""
+2026-06-30 08:15:33 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:15:33 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:15:33 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:15:33 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:15:33 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:15:33 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:33 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:33 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:33 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 9644
+2026-06-30 08:15:33 - DEBUG - POST http://localhost:54738/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:15:33 - DEBUG - Starting new HTTP connection (1): localhost:54738
+2026-06-30 08:15:33 - DEBUG - http://localhost:54738 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:15:33 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:15:33 - DEBUG - Finished Request
+2026-06-30 08:15:35 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:35 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:39 - WARNING - ⚠ 未找到结果
+2026-06-30 08:15:40 - INFO - 
+[5/11] 正在查询: 19723422782
+2026-06-30 08:15:40 - INFO - 等待 4.0 秒...
+2026-06-30 08:15:43 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:15:43 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:15:44 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:15:44 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:44 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:15:44 - DEBUG - Output: ""
+2026-06-30 08:15:44 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:15:44 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:15:44 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:15:44 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:15:44 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:15:44 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:44 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:44 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:44 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 16372
+2026-06-30 08:15:44 - DEBUG - POST http://localhost:60954/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:15:44 - DEBUG - Starting new HTTP connection (1): localhost:60954
+2026-06-30 08:15:45 - DEBUG - http://localhost:60954 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:15:45 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:15:45 - DEBUG - Finished Request
+2026-06-30 08:15:47 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:47 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:51 - WARNING - ⚠ 未找到结果
+2026-06-30 08:15:51 - INFO - 
+[6/11] 正在查询: 19723580405
+2026-06-30 08:15:51 - INFO - 等待 3.7 秒...
+2026-06-30 08:15:55 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:15:55 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:15:55 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:15:55 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:55 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:15:55 - DEBUG - Output: ""
+2026-06-30 08:15:55 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:15:55 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:15:55 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:15:55 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:15:55 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:15:55 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:55 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:15:55 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:15:55 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 9464
+2026-06-30 08:15:56 - DEBUG - POST http://localhost:50860/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:15:56 - DEBUG - Starting new HTTP connection (1): localhost:50860
+2026-06-30 08:15:56 - DEBUG - http://localhost:50860 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:15:56 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:15:56 - DEBUG - Finished Request
+2026-06-30 08:15:58 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:15:58 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:02 - WARNING - ⚠ 未找到结果
+2026-06-30 08:16:02 - INFO - 
+[7/11] 正在查询: 19725237282
+2026-06-30 08:16:02 - INFO - 等待 3.4 秒...
+2026-06-30 08:16:06 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:16:06 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:16:06 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:16:06 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:06 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:16:06 - DEBUG - Output: ""
+2026-06-30 08:16:06 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:16:06 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:16:06 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:16:06 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:16:06 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:16:06 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:06 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:06 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:06 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 23192
+2026-06-30 08:16:07 - DEBUG - POST http://localhost:51423/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:16:07 - DEBUG - Starting new HTTP connection (1): localhost:51423
+2026-06-30 08:16:07 - DEBUG - http://localhost:51423 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:16:07 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:16:07 - DEBUG - Finished Request
+2026-06-30 08:16:09 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:09 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:14 - WARNING - ⚠ 未找到结果
+2026-06-30 08:16:14 - INFO - 
+[8/11] 正在查询: 19726893777
+2026-06-30 08:16:14 - INFO - 等待 2.9 秒...
+2026-06-30 08:16:17 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:16:17 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:16:17 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:16:17 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:17 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:16:17 - DEBUG - Output: ""
+2026-06-30 08:16:17 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:16:17 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:16:17 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:16:17 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:16:17 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:16:17 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:17 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:17 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:17 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 7156
+2026-06-30 08:16:18 - DEBUG - POST http://localhost:55327/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:16:18 - DEBUG - Starting new HTTP connection (1): localhost:55327
+2026-06-30 08:16:18 - DEBUG - http://localhost:55327 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:16:18 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:16:18 - DEBUG - Finished Request
+2026-06-30 08:16:20 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:20 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:24 - WARNING - ⚠ 未找到结果
+2026-06-30 08:16:24 - INFO - 
+[9/11] 正在查询: 19728162747
+2026-06-30 08:16:24 - INFO - 等待 4.5 秒...
+2026-06-30 08:16:29 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:16:29 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:16:29 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:16:29 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:29 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:16:29 - DEBUG - Output: ""
+2026-06-30 08:16:29 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:16:29 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:16:29 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:16:29 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:16:29 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:16:29 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:29 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:29 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:29 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 19844
+2026-06-30 08:16:30 - DEBUG - POST http://localhost:58494/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:16:30 - DEBUG - Starting new HTTP connection (1): localhost:58494
+2026-06-30 08:16:30 - DEBUG - http://localhost:58494 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:16:30 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:16:30 - DEBUG - Finished Request
+2026-06-30 08:16:32 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:33 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:37 - WARNING - ⚠ 未找到结果
+2026-06-30 08:16:37 - INFO - 
+[10/11] 正在查询: 19738966098
+2026-06-30 08:16:37 - INFO - 等待 2.8 秒...
+2026-06-30 08:16:40 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:16:40 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:16:40 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:16:40 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:40 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:16:40 - DEBUG - Output: ""
+2026-06-30 08:16:40 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:16:40 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:16:40 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:16:40 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:16:40 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:16:40 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:40 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:40 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:40 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 8884
+2026-06-30 08:16:41 - DEBUG - POST http://localhost:62192/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:16:41 - DEBUG - Starting new HTTP connection (1): localhost:62192
+2026-06-30 08:16:41 - DEBUG - http://localhost:62192 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:16:41 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:16:41 - DEBUG - Finished Request
+2026-06-30 08:16:43 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:43 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:16:47 - WARNING - ⚠ 未找到结果
+2026-06-30 08:16:47 - INFO - 
+[11/11] 正在查询: 19789876491
+2026-06-30 08:16:47 - INFO - 等待 4.0 秒...
+2026-06-30 08:16:52 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:16:52 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:16:52 - DEBUG - chromedriver not found in PATH
+2026-06-30 08:16:52 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:52 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:16:52 - DEBUG - Output: ""
+2026-06-30 08:16:52 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:16:52 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:16:52 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:16:52 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:16:52 - DEBUG - chromedriver 149.0.7827.155 already in the cache
+2026-06-30 08:16:52 - DEBUG - Driver path: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:52 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:16:52 - DEBUG - Using driver at: C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe
+2026-06-30 08:16:52 - DEBUG - Started executable: `C:\Users\maoni\.cache\selenium\chromedriver\win64\149.0.7827.155\chromedriver.exe` in a child process with pid: 11076
+2026-06-30 08:16:53 - DEBUG - POST http://localhost:65488/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:16:53 - DEBUG - Starting new HTTP connection (1): localhost:65488
+2026-06-30 08:16:53 - DEBUG - http://localhost:65488 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:16:53 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff716793fa5+14925]\n\tchromedriver!GetHandleVerifier [0x7ff716794000+14980]\n\tchromedriver!(No symbol) [0x7ff7162d793d]\n\tchromedriver!(No symbol) [0x7ff716319024]\n\tchromedriver!(No symbol) [0x7ff716314559]\n\tchromedriver!(No symbol) [0x7ff7163685f1]\n\tchromedriver!(No symbol) [0x7ff716367e56]\n\tchromedriver!(No symbol) [0x7ff71632401c]\n\tchromedriver!(No symbol) [0x7ff716324f43]\n\tchromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]\n\tchromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]\n\tchromedriver!GetHandleVerifier [0x7ff716d97115+617a95]\n\tchromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]\n\tchromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]\n\tchromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]\n\tchromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]\n\tchromedriver!GetHandleVerifier [0x7ff716781447+1dc7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:16:53 - DEBUG - Finished Request
+2026-06-30 08:16:55 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:17:06 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff716793fa5+14925]
+	chromedriver!GetHandleVerifier [0x7ff716794000+14980]
+	chromedriver!(No symbol) [0x7ff7162d793d]
+	chromedriver!(No symbol) [0x7ff716319024]
+	chromedriver!(No symbol) [0x7ff716314559]
+	chromedriver!(No symbol) [0x7ff7163685f1]
+	chromedriver!(No symbol) [0x7ff716367e56]
+	chromedriver!(No symbol) [0x7ff71632401c]
+	chromedriver!(No symbol) [0x7ff716324f43]
+	chromedriver!GetHandleVerifier [0x7ff716d77591+5f7f11]
+	chromedriver!GetHandleVerifier [0x7ff716d71902+5f2282]
+	chromedriver!GetHandleVerifier [0x7ff716d97115+617a95]
+	chromedriver!GetHandleVerifier [0x7ff7167b1dce+3274e]
+	chromedriver!GetHandleVerifier [0x7ff7167ba82c+3b1ac]
+	chromedriver!GetHandleVerifier [0x7ff71679d744+1e0c4]
+	chromedriver!GetHandleVerifier [0x7ff71679d8d4+1e254]
+	chromedriver!GetHandleVerifier [0x7ff716781447+1dc7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:17:10 - WARNING - ⚠ 未找到结果
+2026-06-30 08:17:10 - INFO - 
+保存查询结果...
+2026-06-30 08:17:10 - INFO - ✓ 结果已保存到: search_results.xlsx
+2026-06-30 08:17:10 - INFO - ✓ 所有查询已完成
+2026-06-30 08:17:10 - INFO - ✓ 结果已保存到: search_results.xlsx
+2026-06-30 08:17:10 - INFO - 
+正在清理资源...
+2026-06-30 08:17:13 - INFO - ✓ NordVPN 已断开
+2026-06-30 08:17:13 - INFO - ✓ 清理完成
+2026-06-30 08:17:13 - INFO - ============================================================
+2026-06-30 08:21:55 - INFO - ============================================================
+2026-06-30 08:21:55 - INFO - 开始 Fast People Search 自动化查询
+2026-06-30 08:21:55 - INFO - ============================================================
+2026-06-30 08:21:55 - INFO - 正在连接 NORDVPN...
+2026-06-30 08:21:57 - INFO - ✓ NordVPN 已连接
+2026-06-30 08:21:59 - INFO - ✓ NORDVPN 已连接
+2026-06-30 08:21:59 - INFO - 测试VPN连接...
+2026-06-30 08:21:59 - DEBUG - Starting new HTTPS connection (1): api.ipify.org:443
+2026-06-30 08:22:01 - DEBUG - https://api.ipify.org:443 "GET /?format=json HTTP/1.1" 200 23
+2026-06-30 08:22:01 - INFO - ✓ 连接测试成功，当前IP: 216.245.152.41
+2026-06-30 08:22:01 - INFO - ✓ 读取了 11 个电话号码
+2026-06-30 08:22:01 - INFO - 
+[1/11] 正在查询: ﻿# 在此输入电话号码，每行一个
+2026-06-30 08:22:01 - INFO - 等待 3.4 秒...
+2026-06-30 08:22:04 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:22:04 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:22:05 - DEBUG - Found chromedriver 149.0.7827.201 in PATH: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:22:05 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:22:05 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:22:05 - DEBUG - Output: ""
+2026-06-30 08:22:05 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:22:05 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:22:05 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:22:05 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:22:05 - DEBUG - Driver path: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:22:05 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:22:05 - DEBUG - Using driver at: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:22:05 - DEBUG - Started executable: `C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe` in a child process with pid: 27284
+2026-06-30 08:22:05 - DEBUG - POST http://localhost:63860/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:22:05 - DEBUG - Starting new HTTP connection (1): localhost:63860
+2026-06-30 08:22:05 - DEBUG - http://localhost:63860 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:22:05 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]\n\tchromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]\n\tchromedriver!(No symbol) [0x7ff79d6f784d]\n\tchromedriver!(No symbol) [0x7ff79d739194]\n\tchromedriver!(No symbol) [0x7ff79d7346c9]\n\tchromedriver!(No symbol) [0x7ff79d788281]\n\tchromedriver!(No symbol) [0x7ff79d787ae6]\n\tchromedriver!(No symbol) [0x7ff79d744210]\n\tchromedriver!(No symbol) [0x7ff79d745183]\n\tchromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]\n\tchromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]\n\tchromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]\n\tchromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:22:05 - DEBUG - Finished Request
+2026-06-30 08:22:07 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:22:07 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:22:11 - WARNING - ⚠ 未找到结果
+2026-06-30 08:22:12 - INFO - 
+[2/11] 正在查询: 19545315551
+2026-06-30 08:22:12 - INFO - 等待 3.9 秒...
+2026-06-30 08:22:15 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:22:15 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:22:16 - DEBUG - Found chromedriver 149.0.7827.201 in PATH: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:22:16 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:22:16 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:22:16 - DEBUG - Output: ""
+2026-06-30 08:22:16 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:22:16 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:22:16 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:22:16 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:22:16 - DEBUG - Driver path: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:22:16 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:22:16 - DEBUG - Using driver at: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:22:16 - DEBUG - Started executable: `C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe` in a child process with pid: 26888
+2026-06-30 08:22:16 - DEBUG - POST http://localhost:50827/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:22:16 - DEBUG - Starting new HTTP connection (1): localhost:50827
+2026-06-30 08:22:17 - DEBUG - http://localhost:50827 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:22:17 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]\n\tchromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]\n\tchromedriver!(No symbol) [0x7ff79d6f784d]\n\tchromedriver!(No symbol) [0x7ff79d739194]\n\tchromedriver!(No symbol) [0x7ff79d7346c9]\n\tchromedriver!(No symbol) [0x7ff79d788281]\n\tchromedriver!(No symbol) [0x7ff79d787ae6]\n\tchromedriver!(No symbol) [0x7ff79d744210]\n\tchromedriver!(No symbol) [0x7ff79d745183]\n\tchromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]\n\tchromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]\n\tchromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]\n\tchromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:22:17 - DEBUG - Finished Request
+2026-06-30 08:22:19 - ERROR - ✗ WebDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:22:19 - ERROR - ✗ 查询失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:24:25 - INFO - ============================================================
+2026-06-30 08:24:25 - INFO - 开始 Fast People Search 自动化查询
+2026-06-30 08:24:25 - INFO - ============================================================
+2026-06-30 08:24:25 - INFO - 正在连接 NORDVPN...
+2026-06-30 08:24:26 - INFO - ✓ NordVPN 已连接
+2026-06-30 08:24:28 - INFO - ✓ NORDVPN 已连接
+2026-06-30 08:24:28 - INFO - 测试VPN连接...
+2026-06-30 08:24:28 - DEBUG - Starting new HTTPS connection (1): api.ipify.org:443
+2026-06-30 08:24:29 - DEBUG - https://api.ipify.org:443 "GET /?format=json HTTP/1.1" 200 23
+2026-06-30 08:24:29 - INFO - ✓ 连接测试成功，当前IP: 216.245.152.41
+2026-06-30 08:24:29 - INFO - ✓ 读取了 11 个电话号码
+2026-06-30 08:24:29 - INFO - 
+[1/11] 正在查询: ﻿# 在此输入电话号码，每行一个
+2026-06-30 08:24:29 - INFO - 等待 5.0 秒...
+2026-06-30 08:24:34 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:30 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:30 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:30 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:30 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:30 - INFO - 
+[2/11] 正在查询: 19545315551
+2026-06-30 08:25:30 - INFO - 等待 3.4 秒...
+2026-06-30 08:25:33 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:33 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:33 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:33 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:33 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:33 - INFO - 
+[3/11] 正在查询: 19545984714
+2026-06-30 08:25:33 - INFO - 等待 2.6 秒...
+2026-06-30 08:25:36 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:36 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:36 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:36 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:36 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:36 - INFO - 
+[4/11] 正在查询: 19706180046
+2026-06-30 08:25:36 - INFO - 等待 5.0 秒...
+2026-06-30 08:25:41 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:41 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:41 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:41 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:41 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:41 - INFO - 
+[5/11] 正在查询: 19723422782
+2026-06-30 08:25:41 - INFO - 等待 3.0 秒...
+2026-06-30 08:25:44 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:44 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:44 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:44 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:44 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:44 - INFO - 
+[6/11] 正在查询: 19723580405
+2026-06-30 08:25:44 - INFO - 等待 4.3 秒...
+2026-06-30 08:25:48 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:48 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:48 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:48 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:48 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:48 - INFO - 
+[7/11] 正在查询: 19725237282
+2026-06-30 08:25:48 - INFO - 等待 2.8 秒...
+2026-06-30 08:25:51 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:51 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:51 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:51 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:51 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:51 - INFO - 
+[8/11] 正在查询: 19726893777
+2026-06-30 08:25:51 - INFO - 等待 4.1 秒...
+2026-06-30 08:25:55 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:55 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:55 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:55 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:55 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:55 - INFO - 
+[9/11] 正在查询: 19728162747
+2026-06-30 08:25:55 - INFO - 等待 4.1 秒...
+2026-06-30 08:25:59 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:25:59 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:59 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:25:59 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:25:59 - WARNING - ⚠ 未找到结果
+2026-06-30 08:25:59 - INFO - 
+[10/11] 正在查询: 19738966098
+2026-06-30 08:25:59 - INFO - 等待 3.4 秒...
+2026-06-30 08:26:03 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:26:03 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:26:03 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:26:03 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:26:03 - WARNING - ⚠ 未找到结果
+2026-06-30 08:26:03 - INFO - 
+[11/11] 正在查询: 19789876491
+2026-06-30 08:26:03 - INFO - 等待 2.8 秒...
+2026-06-30 08:26:06 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:26:06 - ERROR - ✗ ChromeDriver 初始化失败: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:26:06 - ERROR - ✗ 查询异常: WebDriver.__init__() got multiple values for argument 'options'
+2026-06-30 08:26:06 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 77, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 56, in _init_driver
+    driver = webdriver.Chrome(chrome_path, options=chrome_options)
+TypeError: WebDriver.__init__() got multiple values for argument 'options'
+
+2026-06-30 08:26:06 - WARNING - ⚠ 未找到结果
+2026-06-30 08:26:06 - INFO - 
+保存查询结果...
+2026-06-30 08:26:06 - INFO - ✓ 结果已保存到: search_results.xlsx
+2026-06-30 08:26:06 - INFO - ✓ 所有查询已完成
+2026-06-30 08:26:06 - INFO - ✓ 结果已保存到: search_results.xlsx
+2026-06-30 08:26:06 - INFO - 
+正在清理资源...
+2026-06-30 08:26:07 - INFO - ✓ NordVPN 已断开
+2026-06-30 08:26:07 - INFO - ✓ 清理完成
+2026-06-30 08:26:07 - INFO - ============================================================
+2026-06-30 08:28:12 - INFO - ============================================================
+2026-06-30 08:28:12 - INFO - 开始 Fast People Search 自动化查询
+2026-06-30 08:28:12 - INFO - ============================================================
+2026-06-30 08:28:12 - INFO - 正在连接 NORDVPN...
+2026-06-30 08:28:13 - INFO - ✓ NordVPN 已连接
+2026-06-30 08:28:15 - INFO - ✓ NORDVPN 已连接
+2026-06-30 08:28:15 - INFO - 测试VPN连接...
+2026-06-30 08:28:15 - DEBUG - Starting new HTTPS connection (1): api.ipify.org:443
+2026-06-30 08:28:16 - DEBUG - https://api.ipify.org:443 "GET /?format=json HTTP/1.1" 200 23
+2026-06-30 08:28:16 - INFO - ✓ 连接测试成功，当前IP: 216.245.152.41
+2026-06-30 08:28:16 - INFO - ✓ 读取了 11 个电话号码
+2026-06-30 08:28:16 - INFO - 
+[1/11] 正在查询: ﻿# 在此输入电话号码，每行一个
+2026-06-30 08:28:16 - INFO - 等待 4.2 秒...
+2026-06-30 08:28:21 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:28:22 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:28:22 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:28:22 - DEBUG - Found chromedriver 149.0.7827.201 in PATH: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:22 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:28:22 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:28:22 - DEBUG - Output: ""
+2026-06-30 08:28:22 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:28:22 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:28:22 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:28:22 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:28:22 - DEBUG - Driver path: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:22 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:28:22 - DEBUG - Using driver at: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:22 - DEBUG - Started executable: `C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe` in a child process with pid: 15636
+2026-06-30 08:28:23 - DEBUG - POST http://localhost:52231/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "prefs": {"credentials_enable_service": false, "profile.password_manager_enabled": false}, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--start-maximized", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:28:23 - DEBUG - Starting new HTTP connection (1): localhost:52231
+2026-06-30 08:28:23 - DEBUG - http://localhost:52231 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:28:23 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]\n\tchromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]\n\tchromedriver!(No symbol) [0x7ff79d6f784d]\n\tchromedriver!(No symbol) [0x7ff79d739194]\n\tchromedriver!(No symbol) [0x7ff79d7346c9]\n\tchromedriver!(No symbol) [0x7ff79d788281]\n\tchromedriver!(No symbol) [0x7ff79d787ae6]\n\tchromedriver!(No symbol) [0x7ff79d744210]\n\tchromedriver!(No symbol) [0x7ff79d745183]\n\tchromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]\n\tchromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]\n\tchromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]\n\tchromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:28:23 - DEBUG - Finished Request
+2026-06-30 08:28:25 - ERROR - ✗ ChromeDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:28:25 - ERROR - ✗ 查询异常: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:28:25 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 74, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 53, in _init_driver
+    driver = webdriver.Chrome(options=chrome_options)
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=ChromiumRemoteConnection(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        options=options,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+
+2026-06-30 08:28:29 - WARNING - ⚠ 未找到结果
+2026-06-30 08:28:29 - INFO - 
+[2/11] 正在查询: 19545315551
+2026-06-30 08:28:29 - INFO - 等待 5.0 秒...
+2026-06-30 08:28:34 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:28:34 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:28:34 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:28:34 - DEBUG - Found chromedriver 149.0.7827.201 in PATH: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:34 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:28:34 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:28:34 - DEBUG - Output: ""
+2026-06-30 08:28:34 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:28:34 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:28:34 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:28:34 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:28:34 - DEBUG - Driver path: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:34 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:28:34 - DEBUG - Using driver at: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:34 - DEBUG - Started executable: `C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe` in a child process with pid: 27812
+2026-06-30 08:28:35 - DEBUG - POST http://localhost:61416/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "prefs": {"credentials_enable_service": false, "profile.password_manager_enabled": false}, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--start-maximized", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:28:35 - DEBUG - Starting new HTTP connection (1): localhost:61416
+2026-06-30 08:28:35 - DEBUG - http://localhost:61416 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:28:35 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]\n\tchromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]\n\tchromedriver!(No symbol) [0x7ff79d6f784d]\n\tchromedriver!(No symbol) [0x7ff79d739194]\n\tchromedriver!(No symbol) [0x7ff79d7346c9]\n\tchromedriver!(No symbol) [0x7ff79d788281]\n\tchromedriver!(No symbol) [0x7ff79d787ae6]\n\tchromedriver!(No symbol) [0x7ff79d744210]\n\tchromedriver!(No symbol) [0x7ff79d745183]\n\tchromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]\n\tchromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]\n\tchromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]\n\tchromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:28:35 - DEBUG - Finished Request
+2026-06-30 08:28:37 - ERROR - ✗ ChromeDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:28:37 - ERROR - ✗ 查询异常: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:28:37 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 74, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 53, in _init_driver
+    driver = webdriver.Chrome(options=chrome_options)
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=ChromiumRemoteConnection(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        options=options,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+
+2026-06-30 08:28:41 - WARNING - ⚠ 未找到结果
+2026-06-30 08:28:41 - INFO - 
+[3/11] 正在查询: 19545984714
+2026-06-30 08:28:41 - INFO - 等待 3.1 秒...
+2026-06-30 08:28:44 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:28:44 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:28:44 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:28:45 - DEBUG - Found chromedriver 149.0.7827.201 in PATH: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:45 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:28:45 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:28:45 - DEBUG - Output: ""
+2026-06-30 08:28:45 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:28:45 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:28:45 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:28:45 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:28:45 - DEBUG - Driver path: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:45 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:28:45 - DEBUG - Using driver at: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:45 - DEBUG - Started executable: `C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe` in a child process with pid: 22476
+2026-06-30 08:28:45 - DEBUG - POST http://localhost:49834/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "prefs": {"credentials_enable_service": false, "profile.password_manager_enabled": false}, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--start-maximized", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:28:45 - DEBUG - Starting new HTTP connection (1): localhost:49834
+2026-06-30 08:28:46 - DEBUG - http://localhost:49834 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:28:46 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]\n\tchromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]\n\tchromedriver!(No symbol) [0x7ff79d6f784d]\n\tchromedriver!(No symbol) [0x7ff79d739194]\n\tchromedriver!(No symbol) [0x7ff79d7346c9]\n\tchromedriver!(No symbol) [0x7ff79d788281]\n\tchromedriver!(No symbol) [0x7ff79d787ae6]\n\tchromedriver!(No symbol) [0x7ff79d744210]\n\tchromedriver!(No symbol) [0x7ff79d745183]\n\tchromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]\n\tchromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]\n\tchromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]\n\tchromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:28:46 - DEBUG - Finished Request
+2026-06-30 08:28:48 - ERROR - ✗ ChromeDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:28:48 - ERROR - ✗ 查询异常: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:28:48 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 74, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 53, in _init_driver
+    driver = webdriver.Chrome(options=chrome_options)
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=ChromiumRemoteConnection(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        options=options,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+
+2026-06-30 08:28:52 - WARNING - ⚠ 未找到结果
+2026-06-30 08:28:52 - INFO - 
+[4/11] 正在查询: 19706180046
+2026-06-30 08:28:52 - INFO - 等待 2.1 秒...
+2026-06-30 08:28:54 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:28:54 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:28:54 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:28:55 - DEBUG - Found chromedriver 149.0.7827.201 in PATH: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:55 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:28:55 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:28:55 - DEBUG - Output: ""
+2026-06-30 08:28:55 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:28:55 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:28:55 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:28:55 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:28:55 - DEBUG - Driver path: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:55 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:28:55 - DEBUG - Using driver at: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:28:55 - DEBUG - Started executable: `C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe` in a child process with pid: 29668
+2026-06-30 08:28:55 - DEBUG - POST http://localhost:57752/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "prefs": {"credentials_enable_service": false, "profile.password_manager_enabled": false}, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--start-maximized", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:28:55 - DEBUG - Starting new HTTP connection (1): localhost:57752
+2026-06-30 08:28:55 - DEBUG - http://localhost:57752 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:28:55 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]\n\tchromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]\n\tchromedriver!(No symbol) [0x7ff79d6f784d]\n\tchromedriver!(No symbol) [0x7ff79d739194]\n\tchromedriver!(No symbol) [0x7ff79d7346c9]\n\tchromedriver!(No symbol) [0x7ff79d788281]\n\tchromedriver!(No symbol) [0x7ff79d787ae6]\n\tchromedriver!(No symbol) [0x7ff79d744210]\n\tchromedriver!(No symbol) [0x7ff79d745183]\n\tchromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]\n\tchromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]\n\tchromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]\n\tchromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:28:55 - DEBUG - Finished Request
+2026-06-30 08:28:58 - ERROR - ✗ ChromeDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:28:58 - ERROR - ✗ 查询异常: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:28:58 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 74, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 53, in _init_driver
+    driver = webdriver.Chrome(options=chrome_options)
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=ChromiumRemoteConnection(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        options=options,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+
+2026-06-30 08:29:02 - WARNING - ⚠ 未找到结果
+2026-06-30 08:29:02 - INFO - 
+[5/11] 正在查询: 19723422782
+2026-06-30 08:29:02 - INFO - 等待 4.9 秒...
+2026-06-30 08:29:07 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:29:07 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:29:07 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:29:08 - DEBUG - Found chromedriver 149.0.7827.201 in PATH: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:29:08 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:29:08 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:29:08 - DEBUG - Output: ""
+2026-06-30 08:29:08 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:29:08 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:29:08 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:29:08 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:29:08 - DEBUG - Driver path: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:29:08 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:29:08 - DEBUG - Using driver at: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:29:08 - DEBUG - Started executable: `C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe` in a child process with pid: 28988
+2026-06-30 08:29:08 - DEBUG - POST http://localhost:58161/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "prefs": {"credentials_enable_service": false, "profile.password_manager_enabled": false}, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--start-maximized", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:29:08 - DEBUG - Starting new HTTP connection (1): localhost:58161
+2026-06-30 08:29:08 - DEBUG - http://localhost:58161 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:29:08 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]\n\tchromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]\n\tchromedriver!(No symbol) [0x7ff79d6f784d]\n\tchromedriver!(No symbol) [0x7ff79d739194]\n\tchromedriver!(No symbol) [0x7ff79d7346c9]\n\tchromedriver!(No symbol) [0x7ff79d788281]\n\tchromedriver!(No symbol) [0x7ff79d787ae6]\n\tchromedriver!(No symbol) [0x7ff79d744210]\n\tchromedriver!(No symbol) [0x7ff79d745183]\n\tchromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]\n\tchromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]\n\tchromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]\n\tchromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:29:08 - DEBUG - Finished Request
+2026-06-30 08:29:11 - ERROR - ✗ ChromeDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:29:11 - ERROR - ✗ 查询异常: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:29:11 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 74, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 53, in _init_driver
+    driver = webdriver.Chrome(options=chrome_options)
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=ChromiumRemoteConnection(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        options=options,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+
+2026-06-30 08:29:15 - WARNING - ⚠ 未找到结果
+2026-06-30 08:29:15 - INFO - 
+[6/11] 正在查询: 19723580405
+2026-06-30 08:29:15 - INFO - 等待 5.0 秒...
+2026-06-30 08:29:20 - INFO - ✓ 初始化 ChromeDriver...
+2026-06-30 08:29:20 - DEBUG - Selenium Manager binary found at: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe
+2026-06-30 08:29:20 - DEBUG - Executing process: C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\common\windows\selenium-manager.exe --browser chrome --debug --output json
+2026-06-30 08:29:21 - DEBUG - Found chromedriver 149.0.7827.201 in PATH: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:29:21 - DEBUG - chrome detected at C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:29:21 - DEBUG - Running command: wmic datafile where name='C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe' get Version /value
+2026-06-30 08:29:21 - DEBUG - Output: ""
+2026-06-30 08:29:21 - DEBUG - Running command: REG QUERY HKCU\Software\Google\Chrome\BLBeacon /v version
+2026-06-30 08:29:21 - DEBUG - Output: "\r\nHKEY_CURRENT_USER\\Software\\Google\\Chrome\\BLBeacon\r\n    version    REG_SZ    149.0.7827.197\r\n"
+2026-06-30 08:29:21 - DEBUG - Detected browser: chrome 149.0.7827.197
+2026-06-30 08:29:21 - DEBUG - Required driver: chromedriver 149.0.7827.155
+2026-06-30 08:29:21 - DEBUG - Driver path: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:29:21 - DEBUG - Browser path: C:\Program Files\Google\Chrome\Application\chrome.exe
+2026-06-30 08:29:21 - DEBUG - Using driver at: C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe
+2026-06-30 08:29:21 - DEBUG - Started executable: `C:\Users\maoni\my-projects\web-query-automation\chromedriver.exe` in a child process with pid: 8260
+2026-06-30 08:29:21 - DEBUG - POST http://localhost:60783/session {"capabilities": {"firstMatch": [{}], "alwaysMatch": {"browserName": "chrome", "pageLoadStrategy": "normal", "browserVersion": null, "goog:chromeOptions": {"excludeSwitches": ["enable-automation"], "useAutomationExtension": false, "prefs": {"credentials_enable_service": false, "profile.password_manager_enabled": false}, "extensions": [], "binary": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe", "args": ["--disable-blink-features=AutomationControlled", "--start-maximized", "user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/149.0.0.0 Safari/537.36"]}}}}
+2026-06-30 08:29:21 - DEBUG - Starting new HTTP connection (1): localhost:60783
+2026-06-30 08:29:22 - DEBUG - http://localhost:60783 "POST /session HTTP/1.1" 500 0
+2026-06-30 08:29:22 - DEBUG - Remote response: status=500 | data={"value":{"error":"session not created","message":"session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.","stacktrace":"\tchromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]\n\tchromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]\n\tchromedriver!(No symbol) [0x7ff79d6f784d]\n\tchromedriver!(No symbol) [0x7ff79d739194]\n\tchromedriver!(No symbol) [0x7ff79d7346c9]\n\tchromedriver!(No symbol) [0x7ff79d788281]\n\tchromedriver!(No symbol) [0x7ff79d787ae6]\n\tchromedriver!(No symbol) [0x7ff79d744210]\n\tchromedriver!(No symbol) [0x7ff79d745183]\n\tchromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]\n\tchromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]\n\tchromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]\n\tchromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]\n\tchromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]\n\tchromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]\n\tKERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]\n\tntdll!RtlUserThreadStart [0x7ff826127c1c+2c]\n"}} | headers=HTTPHeaderDict({'Content-Length': '1158', 'Content-Type': 'application/json; charset=utf-8', 'cache-control': 'no-cache'})
+2026-06-30 08:29:22 - DEBUG - Finished Request
+2026-06-30 08:29:24 - ERROR - ✗ ChromeDriver 初始化失败: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:29:24 - ERROR - ✗ 查询异常: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+2026-06-30 08:29:24 - ERROR - Traceback (most recent call last):
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 74, in search_by_phone
+    self.driver = self._init_driver()
+                  ~~~~~~~~~~~~~~~~~^^
+  File "C:\Users\maoni\my-projects\web-query-automation\scraper.py", line 53, in _init_driver
+    driver = webdriver.Chrome(options=chrome_options)
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chrome\webdriver.py", line 45, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        DesiredCapabilities.CHROME["browserName"],
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<3 lines>...
+        keep_alive,
+        ^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\chromium\webdriver.py", line 56, in __init__
+    super().__init__(
+    ~~~~~~~~~~~~~~~~^
+        command_executor=ChromiumRemoteConnection(
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    ...<6 lines>...
+        options=options,
+        ^^^^^^^^^^^^^^^^
+    )
+    ^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 208, in __init__
+    self.start_session(capabilities)
+    ~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 292, in start_session
+    response = self.execute(Command.NEW_SESSION, caps)["value"]
+               ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\webdriver.py", line 347, in execute
+    self.error_handler.check_response(response)
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^
+  File "C:\Users\maoni\AppData\Local\Programs\Python\Python313\Lib\site-packages\selenium\webdriver\remote\errorhandler.py", line 229, in check_response
+    raise exception_class(message, screen, stacktrace)
+selenium.common.exceptions.SessionNotCreatedException: Message: session not created: Chrome instance exited. Examine ChromeDriver verbose log to determine the cause.
+Stacktrace:
+	chromedriver!GetHandleVerifier [0x7ff79dbb36f5+14e95]
+	chromedriver!GetHandleVerifier [0x7ff79dbb3750+14ef0]
+	chromedriver!(No symbol) [0x7ff79d6f784d]
+	chromedriver!(No symbol) [0x7ff79d739194]
+	chromedriver!(No symbol) [0x7ff79d7346c9]
+	chromedriver!(No symbol) [0x7ff79d788281]
+	chromedriver!(No symbol) [0x7ff79d787ae6]
+	chromedriver!(No symbol) [0x7ff79d744210]
+	chromedriver!(No symbol) [0x7ff79d745183]
+	chromedriver!GetHandleVerifier [0x7ff79e19af31+5fc6d1]
+	chromedriver!GetHandleVerifier [0x7ff79e1952cb+5f6a6b]
+	chromedriver!GetHandleVerifier [0x7ff79e1ba445+61bbe5]
+	chromedriver!GetHandleVerifier [0x7ff79dbd0c7e+3241e]
+	chromedriver!GetHandleVerifier [0x7ff79dbd933c+3aadc]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd194+1e934]
+	chromedriver!GetHandleVerifier [0x7ff79dbbd324+1eac4]
+	chromedriver!GetHandleVerifier [0x7ff79dba0917+20b7]
+	KERNEL32!BaseThreadInitThunk [0x7ff82548e957+17]
+	ntdll!RtlUserThreadStart [0x7ff826127c1c+2c]
+
+
+2026-06-30 08:29:28 - WARNING - ⚠ 未找到结果
+2026-06-30 08:29:28 - INFO - 
+[7/11] 正在查询: 19725237282
+2026-06-30 08:29:28 - INFO - 等待 4.8 秒...
+2026-06-30 08:35:07 - INFO - ============================================================
+2026-06-30 08:35:07 - INFO - 开始 Fast People Search 自动化查询
+2026-06-30 08:35:07 - INFO - ============================================================
+2026-06-30 08:35:07 - INFO - 正在连接 NORDVPN...
+2026-06-30 08:35:09 - INFO - ✓ NordVPN 已连接
+2026-06-30 08:35:11 - INFO - ✓ NORDVPN 已连接
+2026-06-30 08:35:11 - INFO - 测试VPN连接...
+2026-06-30 08:35:11 - DEBUG - Starting new HTTPS connection (1): api.ipify.org:443
+2026-06-30 08:35:12 - DEBUG - https://api.ipify.org:443 "GET /?format=json HTTP/1.1" 200 23
+2026-06-30 08:35:12 - INFO - ✓ 连接测试成功，当前IP: 216.245.152.41
+2026-06-30 08:35:12 - INFO - ✓ 读取了 11 个电话号码
+2026-06-30 08:35:12 - INFO - 
+[1/11] 正在查询: ﻿# 在此输入电话号码，每行一个
+2026-06-30 08:35:12 - INFO - 等待 6.6 秒...
+2026-06-30 08:35:19 - INFO - ✓ 初始化 cloudscraper...
+2026-06-30 08:35:19 - INFO - ✓ cloudscraper 已初始化
+2026-06-30 08:35:19 - INFO - 正在查询: ﻿# 在此输入电话号码，每行一个
+2026-06-30 08:35:19 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/﻿# 在此输入电话号码，每行一个
+2026-06-30 08:35:19 - DEBUG - Starting new HTTPS connection (1): www.fastpeoplesearch.com:443
+2026-06-30 08:35:22 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/%EF%BB%BF HTTP/1.1" 403 None
+2026-06-30 08:35:22 - INFO - 状态码: 403
+2026-06-30 08:35:22 - ERROR - ✗ 被 Cloudflare 拒绝 (403)
+2026-06-30 08:35:22 - WARNING - ⚠ 未找到结果
+2026-06-30 08:35:22 - INFO - 
+[2/11] 正在查询: 19545315551
+2026-06-30 08:35:22 - INFO - 等待 6.8 秒...
+2026-06-30 08:35:29 - INFO - 正在查询: 19545315551
+2026-06-30 08:35:29 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19545315551
+2026-06-30 08:35:29 - DEBUG - Resetting dropped connection: www.fastpeoplesearch.com
+2026-06-30 08:35:31 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/19545315551 HTTP/1.1" 403 None
+2026-06-30 08:35:31 - INFO - 状态码: 403
+2026-06-30 08:35:31 - ERROR - ✗ 被 Cloudflare 拒绝 (403)
+2026-06-30 08:35:31 - WARNING - ⚠ 未找到结果
+2026-06-30 08:35:31 - INFO - 
+[3/11] 正在查询: 19545984714
+2026-06-30 08:35:31 - INFO - 等待 6.0 秒...
+2026-06-30 08:35:37 - INFO - 正在查询: 19545984714
+2026-06-30 08:35:37 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19545984714
+2026-06-30 08:35:37 - DEBUG - Resetting dropped connection: www.fastpeoplesearch.com
+2026-06-30 08:35:39 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/19545984714 HTTP/1.1" 403 None
+2026-06-30 08:35:40 - INFO - 状态码: 403
+2026-06-30 08:35:40 - ERROR - ✗ 被 Cloudflare 拒绝 (403)
+2026-06-30 08:35:40 - WARNING - ⚠ 未找到结果
+2026-06-30 08:35:40 - INFO - 
+[4/11] 正在查询: 19706180046
+2026-06-30 08:35:40 - INFO - 等待 5.2 秒...
+2026-06-30 08:35:45 - INFO - 正在查询: 19706180046
+2026-06-30 08:35:45 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19706180046
+2026-06-30 08:35:45 - DEBUG - Resetting dropped connection: www.fastpeoplesearch.com
+2026-06-30 08:35:48 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/19706180046 HTTP/1.1" 403 None
+2026-06-30 08:35:48 - INFO - 状态码: 403
+2026-06-30 08:35:48 - ERROR - ✗ 被 Cloudflare 拒绝 (403)
+2026-06-30 08:35:48 - WARNING - ⚠ 未找到结果
+2026-06-30 08:35:48 - INFO - 
+[5/11] 正在查询: 19723422782
+2026-06-30 08:35:48 - INFO - 等待 4.7 秒...
+2026-06-30 08:35:53 - INFO - 正在查询: 19723422782
+2026-06-30 08:35:53 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19723422782
+2026-06-30 08:35:53 - DEBUG - Resetting dropped connection: www.fastpeoplesearch.com
+2026-06-30 08:35:55 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/19723422782 HTTP/1.1" 403 None
+2026-06-30 08:35:55 - INFO - 状态码: 403
+2026-06-30 08:35:55 - ERROR - ✗ 被 Cloudflare 拒绝 (403)
+2026-06-30 08:35:55 - WARNING - ⚠ 未找到结果
+2026-06-30 08:35:55 - INFO - 
+[6/11] 正在查询: 19723580405
+2026-06-30 08:35:55 - INFO - 等待 3.4 秒...
+2026-06-30 08:35:59 - INFO - 正在查询: 19723580405
+2026-06-30 08:35:59 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19723580405
+2026-06-30 08:35:59 - DEBUG - Resetting dropped connection: www.fastpeoplesearch.com
+2026-06-30 08:36:01 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/19723580405 HTTP/1.1" 403 None
+2026-06-30 08:36:02 - INFO - 状态码: 403
+2026-06-30 08:36:02 - ERROR - ✗ 被 Cloudflare 拒绝 (403)
+2026-06-30 08:36:02 - WARNING - ⚠ 未找到结果
+2026-06-30 08:36:02 - INFO - 
+[7/11] 正在查询: 19725237282
+2026-06-30 08:36:02 - INFO - 等待 6.2 秒...
+2026-06-30 08:36:08 - INFO - 正在查询: 19725237282
+2026-06-30 08:36:08 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19725237282
+2026-06-30 08:36:08 - DEBUG - Resetting dropped connection: www.fastpeoplesearch.com
+2026-06-30 08:36:10 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/19725237282 HTTP/1.1" 403 None
+2026-06-30 08:36:10 - INFO - 状态码: 403
+2026-06-30 08:36:10 - ERROR - ✗ 被 Cloudflare 拒绝 (403)
+2026-06-30 08:36:10 - WARNING - ⚠ 未找到结果
+2026-06-30 08:36:10 - INFO - 
+[8/11] 正在查询: 19726893777
+2026-06-30 08:36:10 - INFO - 等待 6.5 秒...
+2026-06-30 08:38:21 - INFO - ============================================================
+2026-06-30 08:38:21 - INFO - 开始 Fast People Search 自动化查询
+2026-06-30 08:38:21 - INFO - ============================================================
+2026-06-30 08:38:21 - INFO - 正在连接 NORDVPN...
+2026-06-30 08:38:22 - INFO - ✓ NordVPN 已连接
+2026-06-30 08:38:24 - INFO - ✓ NORDVPN 已连接
+2026-06-30 08:38:24 - INFO - 测试VPN连接...
+2026-06-30 08:38:24 - DEBUG - Starting new HTTPS connection (1): api.ipify.org:443
+2026-06-30 08:38:25 - DEBUG - https://api.ipify.org:443 "GET /?format=json HTTP/1.1" 200 23
+2026-06-30 08:38:25 - INFO - ✓ 连接测试成功，当前IP: 216.245.152.41
+2026-06-30 08:38:25 - INFO - ✓ 读取了 10 个电话号码
+2026-06-30 08:38:25 - INFO - 
+[1/10] 正在查询: ﻿19545315551
+2026-06-30 08:38:25 - INFO - 等待 3.2 秒...
+2026-06-30 08:38:29 - INFO - ✓ 初始化 cloudscraper...
+2026-06-30 08:38:29 - INFO - ✓ cloudscraper 已初始化
+2026-06-30 08:38:29 - INFO - 正在查询: ﻿19545315551
+2026-06-30 08:38:29 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/﻿19545315551
+2026-06-30 08:38:29 - DEBUG - Starting new HTTPS connection (1): www.fastpeoplesearch.com:443
+2026-06-30 08:38:31 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/%EF%BB%BF19545315551 HTTP/1.1" 403 None
+2026-06-30 08:38:31 - INFO - 状态码: 403
+2026-06-30 08:38:31 - WARNING - ⚠ 被 Cloudflare 拒绝 (403)，尝试更换策略...
+2026-06-30 08:38:36 - WARNING - ⚠ 未找到结果
+2026-06-30 08:38:36 - INFO - 
+[2/10] 正在查询: 19545984714
+2026-06-30 08:38:36 - INFO - 等待 3.7 秒...
+2026-06-30 08:38:40 - INFO - 正在查询: 19545984714
+2026-06-30 08:38:42 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19545984714
+2026-06-30 08:38:42 - DEBUG - Resetting dropped connection: www.fastpeoplesearch.com
+2026-06-30 08:38:44 - DEBUG - https://www.fastpeoplesearch.com:443 "GET /search/person/phone/19545984714 HTTP/1.1" 403 None
+2026-06-30 08:38:44 - INFO - 状态码: 403
+2026-06-30 08:38:44 - WARNING - ⚠ 被 Cloudflare 拒绝 (403)，尝试更换策略...
+2026-06-30 08:38:49 - WARNING - ⚠ 未找到结果
+2026-06-30 08:38:49 - INFO - 
+[3/10] 正在查询: 19706180046
+2026-06-30 08:38:49 - INFO - 等待 4.6 秒...
+2026-06-30 08:38:54 - INFO - 正在查询: 19706180046
+2026-06-30 08:38:54 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19706180046
+2026-06-30 08:38:54 - ERROR - ✗ 请求异常: ('Connection aborted.', RemoteDisconnected('Remote end closed connection without response'))
+2026-06-30 08:38:54 - WARNING - ⚠ 未找到结果
+2026-06-30 08:38:54 - INFO - 
+[4/10] 正在查询: 19723422782
+2026-06-30 08:38:54 - INFO - 等待 6.1 秒...
+2026-06-30 08:39:00 - INFO - 正在查询: 19723422782
+2026-06-30 08:39:00 - INFO - 访问: https://www.fastpeoplesearch.com/search/person/phone/19723422782
+2026-06-30 08:39:00 - DEBUG - Starting new HTTPS connection (2): www.fastpeoplesearch.com:443
+2026-06-30 08:47:57 - INFO - ============================================================
+2026-06-30 08:47:57 - INFO - 开始 Fast People Search 自动化查询
+2026-06-30 08:47:57 - INFO - ============================================================
+2026-06-30 08:47:57 - INFO - 正在连接 NORDVPN...
+2026-06-30 08:47:58 - INFO - ✓ NordVPN 已连接
+2026-06-30 08:48:00 - INFO - ✓ NORDVPN 已连接
+2026-06-30 08:48:00 - INFO - 测试VPN连接...
+2026-06-30 08:48:00 - DEBUG - Starting new HTTPS connection (1): api.ipify.org:443
+2026-06-30 08:48:02 - DEBUG - https://api.ipify.org:443 "GET /?format=json HTTP/1.1" 200 23
+2026-06-30 08:48:02 - INFO - ✓ 连接测试成功，当前IP: 216.245.152.41
+2026-06-30 08:48:02 - INFO - ✓ 读取了 10 个电话号码
+2026-06-30 08:48:02 - INFO - 
+[1/10] 正在查询: ﻿19545315551
+2026-06-30 08:48:02 - INFO - 等待 3.4 秒...
+2026-06-30 08:48:05 - INFO - ✓ 初始化 cloudscraper...
+2026-06-30 08:48:06 - INFO - ✓ cloudscraper 已初始化
+2026-06-30 08:48:06 - INFO - 正在查询: ﻿19545315551
+2026-06-30 08:48:06 - INFO - 访问首页获取会话...
+2026-06-30 08:48:06 - DEBUG - Starting new HTTPS connection (1): www.searchpeoplefree.com:443
+2026-06-30 08:48:07 - DEBUG - https://www.searchpeoplefree.com:443 "GET / HTTP/1.1" 403 None
+2026-06-30 08:48:07 - INFO - 首页状态码: 403
+2026-06-30 08:48:09 - INFO - 尝试: https://www.searchpeoplefree.com/search?phone=﻿19545315551
+2026-06-30 08:48:09 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:10 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search?phone=%EF%BB%BF19545315551 HTTP/1.1" 403 None
+2026-06-30 08:48:10 - INFO - 状态码: 403
+2026-06-30 08:48:10 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:48:13 - INFO - 尝试: https://www.searchpeoplefree.com/search?phonenumber=﻿19545315551
+2026-06-30 08:48:13 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:14 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search?phonenumber=%EF%BB%BF19545315551 HTTP/1.1" 403 None
+2026-06-30 08:48:14 - INFO - 状态码: 403
+2026-06-30 08:48:14 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:48:17 - INFO - 尝试: https://www.searchpeoplefree.com/search/person/phone/﻿19545315551
+2026-06-30 08:48:17 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:18 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search/person/phone/%EF%BB%BF19545315551 HTTP/1.1" 403 None
+2026-06-30 08:48:18 - INFO - 状态码: 403
+2026-06-30 08:48:18 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:48:21 - INFO - 尝试: https://www.searchpeoplefree.com/?search=﻿19545315551
+2026-06-30 08:48:21 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:22 - DEBUG - https://www.searchpeoplefree.com:443 "GET /?search=%EF%BB%BF19545315551 HTTP/1.1" 403 None
+2026-06-30 08:48:22 - INFO - 状态码: 403
+2026-06-30 08:48:22 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:48:25 - ERROR - ✗ 所有 URL 都失败了
+2026-06-30 08:48:25 - WARNING - ⚠ 未找到结果
+2026-06-30 08:48:25 - INFO - 
+[2/10] 正在查询: 19545984714
+2026-06-30 08:48:25 - INFO - 等待 8.0 秒...
+2026-06-30 08:48:33 - INFO - 正在查询: 19545984714
+2026-06-30 08:48:33 - INFO - 访问首页获取会话...
+2026-06-30 08:48:33 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:34 - DEBUG - https://www.searchpeoplefree.com:443 "GET / HTTP/1.1" 403 None
+2026-06-30 08:48:34 - INFO - 首页状态码: 403
+2026-06-30 08:48:36 - INFO - 尝试: https://www.searchpeoplefree.com/search?phone=19545984714
+2026-06-30 08:48:36 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:38 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search?phone=19545984714 HTTP/1.1" 403 None
+2026-06-30 08:48:38 - INFO - 状态码: 403
+2026-06-30 08:48:38 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:48:41 - INFO - 尝试: https://www.searchpeoplefree.com/search?phonenumber=19545984714
+2026-06-30 08:48:41 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:42 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search?phonenumber=19545984714 HTTP/1.1" 403 None
+2026-06-30 08:48:42 - INFO - 状态码: 403
+2026-06-30 08:48:42 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:48:45 - INFO - 尝试: https://www.searchpeoplefree.com/search/person/phone/19545984714
+2026-06-30 08:48:45 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:46 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search/person/phone/19545984714 HTTP/1.1" 403 None
+2026-06-30 08:48:46 - INFO - 状态码: 403
+2026-06-30 08:48:46 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:48:49 - INFO - 尝试: https://www.searchpeoplefree.com/?search=19545984714
+2026-06-30 08:48:49 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:48:50 - DEBUG - https://www.searchpeoplefree.com:443 "GET /?search=19545984714 HTTP/1.1" 403 None
+2026-06-30 08:48:50 - INFO - 状态码: 403
+2026-06-30 08:48:50 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:48:53 - ERROR - ✗ 所有 URL 都失败了
+2026-06-30 08:48:53 - WARNING - ⚠ 未找到结果
+2026-06-30 08:48:53 - INFO - 
+[3/10] 正在查询: 19706180046
+2026-06-30 08:48:53 - INFO - 等待 6.4 秒...
+2026-06-30 08:49:00 - INFO - 正在查询: 19706180046
+2026-06-30 08:49:00 - INFO - 访问首页获取会话...
+2026-06-30 08:49:00 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:49:01 - DEBUG - https://www.searchpeoplefree.com:443 "GET / HTTP/1.1" 403 None
+2026-06-30 08:49:01 - INFO - 首页状态码: 403
+2026-06-30 08:49:03 - INFO - 尝试: https://www.searchpeoplefree.com/search?phone=19706180046
+2026-06-30 08:49:03 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:49:04 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search?phone=19706180046 HTTP/1.1" 403 None
+2026-06-30 08:49:04 - INFO - 状态码: 403
+2026-06-30 08:49:04 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:49:07 - INFO - 尝试: https://www.searchpeoplefree.com/search?phonenumber=19706180046
+2026-06-30 08:49:07 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:49:09 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search?phonenumber=19706180046 HTTP/1.1" 403 None
+2026-06-30 08:49:09 - INFO - 状态码: 403
+2026-06-30 08:49:09 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:49:12 - INFO - 尝试: https://www.searchpeoplefree.com/search/person/phone/19706180046
+2026-06-30 08:49:12 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:49:13 - DEBUG - https://www.searchpeoplefree.com:443 "GET /search/person/phone/19706180046 HTTP/1.1" 403 None
+2026-06-30 08:49:13 - INFO - 状态码: 403
+2026-06-30 08:49:13 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:49:16 - INFO - 尝试: https://www.searchpeoplefree.com/?search=19706180046
+2026-06-30 08:49:16 - DEBUG - Resetting dropped connection: www.searchpeoplefree.com
+2026-06-30 08:49:17 - DEBUG - https://www.searchpeoplefree.com:443 "GET /?search=19706180046 HTTP/1.1" 403 None
+2026-06-30 08:49:17 - INFO - 状态码: 403
+2026-06-30 08:49:17 - WARNING - ⚠ 状态码 403，继续尝试...
+2026-06-30 08:49:20 - ERROR - ✗ 所有 URL 都失败了
+2026-06-30 08:49:20 - WARNING - ⚠ 未找到结果
+2026-06-30 08:49:20 - INFO - 
+[4/10] 正在查询: 19723422782
+2026-06-30 08:49:20 - INFO - 等待 6.4 秒...
+2026-06-30 08:49:20 - WARNING - 用户中断程序
+2026-06-30 08:49:20 - INFO - 
+正在清理资源...
