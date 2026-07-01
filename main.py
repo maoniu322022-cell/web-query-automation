@@ -1,5 +1,4 @@
 import logging
-import asyncio
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from scraper import PeopleSearchNameScraper
 from data_handler import DataHandler, results_lock
@@ -13,27 +12,28 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # 并发数（同时开启的浏览器数）
-MAX_WORKERS = 3
+MAX_WORKERS = 1  # 先改为 1，Playwright 多线程需要小心处理
 
 def search_worker(name: str, worker_id: int) -> list:
     """
     单个线程的工作函数
     """
     try:
+        logger.info(f"[Worker {worker_id}] 开始处理: {name}")
+        
         scraper = PeopleSearchNameScraper()
+        scraper.init_browser()
         
-        # 运行异步爬虫
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
+        results = scraper.search_by_name(name)
         
-        results = loop.run_until_complete(scraper.search_by_name(name))
-        loop.close()
+        scraper.close()
         
-        scraper = None
         return results
         
     except Exception as e:
         logger.error(f"[Worker {worker_id}] 查询失败 {name}: {e}")
+        import traceback
+        traceback.print_exc()
         return []
 
 def main():
