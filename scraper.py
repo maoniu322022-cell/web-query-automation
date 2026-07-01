@@ -69,6 +69,9 @@ class PeopleSearchNameScraper:
             
             time.sleep(2)
             
+            # 处理 Cloudflare 验证
+            self._handle_cloudflare()
+            
             # 检查是否需要处理 Error 1015
             self._handle_error_1015()
             
@@ -121,6 +124,35 @@ class PeopleSearchNameScraper:
             import traceback
             traceback.print_exc()
             return []
+    
+    def _handle_cloudflare(self):
+        """处理 Cloudflare 安全验证"""
+        try:
+            page_text = self.page.content()
+            
+            # 检查是否出现 Cloudflare 验证页面
+            if "cloudflare" in page_text.lower() or "请验证您是真人" in page_text or "verify" in page_text.lower():
+                logger.info("⚠️ 检测到 Cloudflare 验证页面")
+                
+                # 尝试找到验证复选框
+                checkbox = self.page.query_selector("input[type='checkbox']")
+                if checkbox:
+                    logger.info("✓ 找到验证复选框，自动点击...")
+                    checkbox.click()
+                    time.sleep(3)
+                    
+                    # 等待验证完成
+                    try:
+                        self.page.wait_for_load_state("networkidle", timeout=10000)
+                    except:
+                        pass
+                    
+                    time.sleep(2)
+                    logger.info("✓ Cloudflare 验证完成")
+                else:
+                    logger.warning("⚠️ 未找到验证复选框")
+        except Exception as e:
+            logger.debug(f"处理 Cloudflare 验证时出错: {e}")
     
     def _handle_error_1015(self):
         """处理 Error 1015（限流）- 等待用户刷新后继续"""
@@ -253,6 +285,9 @@ class PeopleSearchNameScraper:
                         detail_page = new_page_info.value
                         time.sleep(2)
                         
+                        # 处理详情页的 Cloudflare 验证
+                        self._handle_cloudflare_on_page(detail_page)
+                        
                         try:
                             # 提取 Wireless 电话
                             phones = self._extract_wireless_phones(detail_page)
@@ -285,6 +320,28 @@ class PeopleSearchNameScraper:
             import traceback
             traceback.print_exc()
             return []
+    
+    def _handle_cloudflare_on_page(self, page):
+        """在新标签页上处理 Cloudflare 验证"""
+        try:
+            page_text = page.content()
+            
+            if "cloudflare" in page_text.lower() or "verify" in page_text.lower():
+                logger.info("✓ 新标签页需要 Cloudflare 验证，自动点击...")
+                
+                checkbox = page.query_selector("input[type='checkbox']")
+                if checkbox:
+                    checkbox.click()
+                    time.sleep(3)
+                    
+                    try:
+                        page.wait_for_load_state("networkidle", timeout=10000)
+                    except:
+                        pass
+                    
+                    time.sleep(2)
+        except Exception as e:
+            logger.debug(f"处理详情页 Cloudflare 验证时出错: {e}")
     
     def _extract_name_from_item(self, item, item_text: str) -> str:
         """从结果项中提取名字"""
