@@ -70,13 +70,18 @@ class PeopleSearchNameScraper:
             
             time.sleep(2)
             
-            # 检查是否有错误信息
-            error_result = self._check_error()
-            if error_result:
+            # 检查是否需要处理 Error 1015
+            self._handle_error_1015()
+            
+            time.sleep(1)
+            
+            # 检查是否有其他错误
+            page_text = self.page.content()
+            if "validation_failed" in page_text or ("invalid" in page_text.lower() and "tahoe" in page_text.lower()):
+                logger.warning("⚠️ 搜索参数错误")
                 return []
             
             # 检查是否有结果
-            page_text = self.page.content()
             if "0 people" in page_text or "No results" in page_text or "404" in page_text:
                 logger.info(f"未找到 '{name}' 的搜索结果")
                 return []
@@ -118,34 +123,23 @@ class PeopleSearchNameScraper:
             # 不关闭浏览器，保留给下一次使用
             pass
     
-    def _check_error(self) -> bool:
-        """检查是否有错误信息，返回 True 表示有错误"""
+    def _handle_error_1015(self):
+        """处理 Error 1015（限流）- 等待用户刷新后继续"""
         try:
             page_text = self.page.content()
             
             if "1015" in page_text:
-                logger.warning("⚠️ 遇到 Error 1015 - 需要切换 VPN")
+                logger.warning("⚠️ 遇到 Error 1015 - 网站限流")
                 logger.warning("请按照以下步骤操作:")
                 logger.warning("1. 切换 VPN")
                 logger.warning("2. 按 F5 刷新")
                 logger.warning("3. 按 Enter 继续")
                 input("按 Enter 继续...")
-                return True
-            
-            if "validation_failed" in page_text or "invalid" in page_text.lower():
-                logger.warning("⚠️ 搜索参数错误")
-                return True
-            
-            if "Service Unavailable" in page_text or "error" in page_text.lower():
-                logger.warning("⚠️ 网络连接错误或服务不可用")
-                logger.warning("请检查网络，按 F5 刷新")
-                input("按 Enter 继续...")
-                return True
-            
-            return False
+                
+                # 等待页面刷新
+                time.sleep(2)
         except Exception as e:
-            logger.debug(f"检查错误时出错: {e}")
-            return False
+            logger.debug(f"处理 1015 错误时出错: {e}")
     
     def _extract_results_from_page(self, search_name: str) -> list:
         """
@@ -158,8 +152,9 @@ class PeopleSearchNameScraper:
             time.sleep(1)
             
             # 尝试找到包含人物信息的容器
+            # 根据网站结构，每个人物结果通常在一个独立的 div 或 card 中
             items = self.page.query_selector_all(
-                "[data-id], .result, .person-result, article, .profile-card, div[class*='result']"
+                "div[class*='result'], div[class*='person'], article, .profile-card, [class*='card']"
             )
             
             logger.info(f"找到 {len(items)} 个结果项")
@@ -173,8 +168,8 @@ class PeopleSearchNameScraper:
                     
                     logger.debug(f"处理结果项 {idx+1}: {item_text[:100]}")
                     
-                    # 提取名字 - 通常是加粗或橙色的文本
-                    name_elem = item.query_selector("h2, h3, .name, strong, b")
+                    # 提取名字 - 寻找加粗、橙色或标题标签
+                    name_elem = item.query_selector("h3, h2, .name, strong, b, [style*='bold'], [style*='orange']")
                     if not name_elem:
                         name_elem = item.query_selector("a")
                     
@@ -188,7 +183,7 @@ class PeopleSearchNameScraper:
                     if not name or len(name) < 2:
                         continue
                     
-                    # 提取年龄
+                    # 提取年龄 - 查找 "Approximate Age: XX" 模式
                     age = self._extract_age(item_text)
                     
                     logger.debug(f"名字: {name}, 年龄: {age}")
@@ -199,13 +194,12 @@ class PeopleSearchNameScraper:
                         continue
                     
                     # 提取位置
-                    location_elem = item.query_selector(".location, .city, [class*='location']") or \
-                                   item.query_selector("span:has-text('Location')")
+                    location_elem = item.query_selector(".location, .city, [class*='location']")
                     location = location_elem.text_content().strip() if location_elem else "Unknown"
                     
                     # 点击 "View All Info" 获取详细信息
                     view_info_btn = item.query_selector(
-                        "button:has-text('View All Info'), a:has-text('View All Info'), [class*='view'], [class*='info']"
+                        "button:has-text('View All Info'), a:has-text('View All Info'), [class*='view']:has-text('Info')"
                     )
                     
                     if view_info_btn:
@@ -265,7 +259,7 @@ class PeopleSearchNameScraper:
             
             # 查找所有包含电话号码的元素
             phone_items = page.query_selector_all(
-                ".phone-item, [class*='phone'], .number, .contact, span, div"
+                ".phone-item, [class*='phone'], .number, .contact, span, div, tr, td"
             )
             
             logger.debug(f"在详情页找到 {len(phone_items)} 个可能的电话项")
@@ -325,8 +319,8 @@ class PeopleSearchNameScraper:
         try:
             # 尝试多种格式
             patterns = [
-                r'(?:Approximate\s+)?Age[:\s]+(?:约)?(\d+)',
-                r'Age:\s*(\d+)',
+                r'Approximate\s+Age[:\s]+(\d+)',
+                r'Age[:\s]+(\d+)',
                 r'age\s*:?\s*(\d+)',
                 r'年龄\s*:?\s*(\d+)',
             ]
