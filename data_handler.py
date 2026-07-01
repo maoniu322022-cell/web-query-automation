@@ -1,9 +1,13 @@
-﻿import logging
+import logging
 from typing import List, Dict
 from openpyxl import Workbook
 from openpyxl.styles import Font, PatternFill, Alignment
+from threading import Lock
 
 logger = logging.getLogger(__name__)
+
+# 全局锁，用于线程安全的结果保存
+results_lock = Lock()
 
 class DataHandler:
     def __init__(self, input_file="phones.txt", output_file="search_results.xlsx"):
