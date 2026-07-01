@@ -35,7 +35,7 @@ class PeopleSearchNameScraper:
                 self.scraper = None
         
     def init_browser(self):
-        """初始化浏览器"""
+        """初始化浏览器 - 作为备用方案"""
         try:
             self.playwright = sync_playwright().start()
             
@@ -52,7 +52,7 @@ class PeopleSearchNameScraper:
             )
             
             self.page = self.context.new_page()
-            self.page.set_default_timeout(60000)  # 增加超时时间
+            self.page.set_default_timeout(30000)
             
             self.page.set_extra_http_headers({
                 'Accept-Language': 'en-US,en;q=0.9',
@@ -81,6 +81,47 @@ class PeopleSearchNameScraper:
         except Exception as e:
             logger.debug(f"关闭浏览器时出错: {e}")
     
+    def _is_verification_page(self, html: str) -> bool:
+        """
+        检查是否是验证页面而不是搜索结果
+        优先检查是否有搜索结果，只有在没有结果且有验证关键词时才判定为验证页面
+        """
+        html_lower = html.lower()
+        
+        # 首先检查是否有搜索结果标志
+        has_search_results = (
+            "Approximate Age" in html or
+            "Current Location" in html or
+            "Used to Live" in html or
+            "people in u.s." in html_lower or
+            "people in" in html_lower and ("named" in html_lower or "age" in html_lower)
+        )
+        
+        if has_search_results:
+            logger.info("✓ 检测到搜索结果内容")
+            return False
+        
+        # 如果没有搜索结果，再检查是否有验证页面标志
+        verification_keywords = [
+            "Performing security verification",
+            "Incompatible browser",
+            "security verification",
+            "challenges.cloudflare",
+            "just a moment"
+        ]
+        
+        for keyword in verification_keywords:
+            if keyword.lower() in html_lower:
+                logger.warning(f"⚠️ 检测到验证页面关键词: {keyword}")
+                return True
+        
+        # 检查 HTML 大小（验证页面通常较小）
+        if len(html) < 3000:
+            logger.warning(f"⚠️ HTML 内容较小 ({len(html)} 字节)，可能是验证页面")
+            return True
+        
+        return False
+    
     def search_by_name(self, name: str) -> list:
         """
         按名字搜索
@@ -94,25 +135,40 @@ class PeopleSearchNameScraper:
             logger.info(f"正在搜索: {name}")
             logger.info(f"访问 URL: {search_url}")
             
-            # 使用 Playwright 打开页面（必须渲染 JavaScript）
+            # 优先使用 cloudscraper
+            if self.scraper:
+                logger.info("使用 cloudscraper 进行请求...")
+                page_content = self._fetch_with_cloudscraper(search_url)
+                
+                if page_content:
+                    # 检查是否是验证页面
+                    if self._is_verification_page(page_content):
+                        logger.warning("⚠️ cloudscraper 返回验证页面，切换到浏览器模式...")
+                    else:
+                        logger.info("✓ 获取到真实搜索结果，解析中...")
+                        results = self._extract_results_from_html(page_content, name)
+                        if results:
+                            return results
+            
+            # 如果 cloudscraper 失败或返回验证页面，使用 Playwright
+            logger.info("使用 Playwright 进行请求...")
             if not self.page:
                 self.init_browser()
             
-            logger.info("使用 Playwright 打开页面...")
-            self.page.goto(search_url, wait_until="domcontentloaded")
+            self.page.goto(search_url, wait_until="networkidle")
+            time.sleep(3)
             
-            # 等待搜索结果 DOM 元素出现
-            logger.info("等待搜索结果加载...")
-            try:
-                self.page.wait_for_selector("div:has-text('Approximate Age')", timeout=15000)
-                logger.info("✓ 搜索结果已加载")
-            except TimeoutError:
-                logger.warning("⚠️ 等待结果超时，继续处理...")
+            # 检查是否需要处理验证
+            page_content = self.page.content()
+            if self._is_verification_page(page_content):
+                logger.warning("⚠️ 浏览器页面也是验证页面")
+                logger.info("📌 需要手动完成 Cloudflare 验证")
+                logger.info("等待用户完成验证... (按任何键继续)")
+                input()
+                time.sleep(2)
+                page_content = self.page.content()
             
-            time.sleep(2)
-            
-            # 从 DOM 直接提取结果
-            results = self._extract_results_from_dom(name)
+            results = self._extract_results_from_html(page_content, name)
             
             return results
             
@@ -122,84 +178,201 @@ class PeopleSearchNameScraper:
             traceback.print_exc()
             return []
     
-    def _extract_results_from_dom(self, search_name: str) -> list:
+    def _fetch_with_cloudscraper(self, url: str) -> str:
+        """使用 cloudscraper 获取页面内容"""
+        try:
+            logger.info(f"用 cloudscraper 请求: {url}")
+            
+            headers = {
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Cache-Control': 'max-age=0',
+                'Upgrade-Insecure-Requests': '1'
+            }
+            
+            response = self.scraper.get(url, headers=headers, timeout=30)
+            
+            if response.status_code == 200:
+                logger.info(f"✓ 请求成功 (状态码: {response.status_code}, HTML长度: {len(response.text)} 字节)")
+                
+                # 输出 HTML 头部用于调试
+                logger.debug(f"HTML 头部 (前 500 字): {response.text[:500]}")
+                
+                return response.text
+            else:
+                logger.warning(f"⚠️ 请求返回状态码: {response.status_code}")
+                return None
+                
+        except Exception as e:
+            logger.warning(f"cloudscraper 请求失败: {e}")
+            return None
+    
+    def _extract_results_from_html(self, page_html: str, search_name: str) -> list:
         """
-        从 DOM 中直接提取搜索结果
+        从 HTML 内容提取结果
         """
         results = []
         
         try:
-            logger.info("开始从 DOM 提取结果...")
+            logger.info("开始解析 HTML 内容...")
+            logger.debug(f"HTML 长度: {len(page_html)} 字节")
             
-            # 获取所有包含 "Approximate Age" 文本的结果卡片
-            result_cards = self.page.query_selector_all("div")
+            # 检查是否是验证页面
+            if self._is_verification_page(page_html):
+                logger.warning("⚠️ 页面是验证页面，不是搜索结果")
+                return []
             
-            logger.info(f"页面总共有 {len(result_cards)} 个 div 元素")
+            # 检查是否有结果
+            if "0 people" in page_html or "No results" in page_html or "404" in page_html:
+                logger.info(f"未找到 '{search_name}' 的搜索结果")
+                return []
             
-            processed_count = 0
+            # 检查是否有 "Approximate Age"
+            if "Approximate Age" not in page_html:
+                logger.warning("⚠️ 页面中未找到 'Approximate Age'")
+                logger.debug(f"页面内容片段: {page_html[1000:2000]}")
+                return []
             
-            for card in result_cards:
+            logger.info("✓ 页面中找到 'Approximate Age'")
+            
+            # 使用正则表达式提取结果项
+            # 查找包含名字和年龄的模式
+            pattern = r'<h3[^>]*>([^<]+)</h3>.*?Approximate Age[:\s]+(\d+)'
+            matches = re.findall(pattern, page_html, re.DOTALL | re.IGNORECASE)
+            
+            logger.info(f"找到 {len(matches)} 个潜在结果")
+            
+            if len(matches) == 0:
+                # 尝试另一种模式
+                logger.debug("尝试备用的提取方式...")
+                pattern = r'([A-Z][a-z]+ [A-Z][a-z]+).*?Approximate Age[:\s]+(\d+)'
+                matches = re.findall(pattern, page_html, re.IGNORECASE)
+                logger.info(f"备用方式找到 {len(matches)} 个结果")
+            
+            # 处理每个匹配
+            for idx, (name, age_str) in enumerate(matches):
                 try:
-                    card_text = card.inner_text()
+                    name = name.strip()
+                    age = int(age_str)
                     
-                    # 检查是否包含 "Approximate Age"
-                    if "Approximate Age" not in card_text:
-                        continue
-                    
-                    # 提取名字 - 查找 h3 或第一个粗体文本
-                    name_elem = card.query_selector("h3, .name, [class*='name']")
-                    person_name = None
-                    
-                    if name_elem:
-                        person_name = name_elem.inner_text().strip()
-                    else:
-                        # 从文本中提取名字（通常是第一行）
-                        lines = card_text.split('\n')
-                        for line in lines:
-                            line = line.strip()
-                            if line and len(line) > 3 and line[0].isupper():
-                                # 检查是否像一个名字
-                                if re.match(r'^[A-Z][a-z]+ [A-Z]', line):
-                                    person_name = line
-                                    break
-                    
-                    if not person_name:
-                        logger.debug("无法提取名字")
-                        continue
-                    
-                    logger.debug(f"提取到名字: {person_name}")
-                    
-                    # 提取年龄
-                    age_match = re.search(r'Approximate Age[:\s]+(\d+)', card_text, re.IGNORECASE)
-                    if not age_match:
-                        logger.debug(f"未找到年龄")
-                        continue
-                    
-                    age = int(age_match.group(1))
-                    logger.debug(f"提取到年龄: {age}")
+                    logger.debug(f"结果 {idx+1}: {name} (年龄: {age})")
                     
                     # 筛选年龄 53-75
                     if age < 53 or age > 75:
-                        logger.debug(f"跳过 {person_name} (年龄 {age} 不在范围内)")
+                        logger.debug(f"跳过: {name} (年龄: {age} 不在范围内)")
                         continue
                     
-                    logger.info(f"✓ 符合条件: {person_name} (年龄: {age})")
-                    processed_count += 1
+                    logger.info(f"✓ 符合条件: {name} (年龄: {age})")
                     
-                    # 提取位置
-                    location_match = re.search(r'Current Location[:\s]+([^\n]+)', card_text, re.IGNORECASE)
-                    location = location_match.group(1).strip() if location_match else "Unknown"
-                    logger.debug(f"位置: {location}")
+                    # 提取位置信息
+                    location = self._extract_location_from_html(page_html, name)
+                    
+                    # 由于是静态 HTML，无法直接提取电话，需要访问详情页
+                    # 暂时保存基本信息
+                    results.append({
+                        "name": name,
+                        "age": age,
+                        "location": location,
+                        "phone": "需要访问详情页"
+                    })
+                    
+                except Exception as e:
+                    logger.debug(f"处理结果 {idx+1} 出错: {e}")
+                    continue
+            
+            logger.info(f"共提取 {len(results)} 个符合条件的结果")
+            return results
+            
+        except Exception as e:
+            logger.error(f"解析 HTML 出错: {e}")
+            import traceback
+            traceback.print_exc()
+            return []
+    
+    def _extract_location_from_html(self, html: str, name: str) -> str:
+        """从 HTML 中提取位置"""
+        try:
+            # 查找名字后面的位置信息
+            pattern = f"{name}.*?(?:Current Location|Location)[:\\s]+([^<\\n]+)"
+            match = re.search(pattern, html, re.IGNORECASE | re.DOTALL)
+            if match:
+                location = match.group(1).strip()
+                # 清理 HTML 标签
+                location = re.sub(r'<[^>]+>', '', location)
+                return location
+        except:
+            pass
+        
+        return "Unknown"
+    
+    def search_by_name_with_details(self, name: str) -> list:
+        """
+        按名字搜索并获取详细信息（包括电话）
+        """
+        if not self.page:
+            self.init_browser()
+        
+        results = []
+        
+        try:
+            search_url = f"{self.search_url}/{name.replace(' ', '-').lower()}"
+            logger.info(f"正在搜索(含详情): {name}")
+            
+            self.page.goto(search_url, wait_until="networkidle")
+            time.sleep(3)
+            
+            # 检查是否需要处理验证
+            page_content = self.page.content()
+            if self._is_verification_page(page_content):
+                logger.warning("⚠️ 需要手动完成验证")
+                logger.info("等待用户完成验证... (按任何键继续)")
+                input()
+                time.sleep(2)
+                page_content = self.page.content()
+            
+            if "Approximate Age" not in page_content:
+                logger.warning("⚠️ 页面中未找到搜索结果")
+                return []
+            
+            # 查找所有结果项
+            result_divs = self.page.query_selector_all("div[class*='result']")
+            if not result_divs:
+                result_divs = self.page.query_selector_all("div")
+            
+            logger.info(f"找到 {len(result_divs)} 个可能的结果项")
+            
+            for idx, div in enumerate(result_divs):
+                try:
+                    div_text = div.inner_text()
+                    
+                    if "Approximate Age" not in div_text:
+                        continue
+                    
+                    # 提取名字
+                    name_match = re.search(r'([A-Z][a-z]+ [A-Z][a-z]+)', div_text)
+                    if not name_match:
+                        continue
+                    
+                    person_name = name_match.group(1)
+                    
+                    # 提取年龄
+                    age_match = re.search(r'Approximate Age[:\s]+(\d+)', div_text)
+                    if not age_match:
+                        continue
+                    
+                    age = int(age_match.group(1))
+                    
+                    if age < 53 or age > 75:
+                        continue
+                    
+                    logger.info(f"✓ 找到: {person_name} (年龄: {age})")
                     
                     # 查找 View All Info 按钮
-                    button = card.query_selector("button:has-text('View All Info'), a:has-text('View All Info'), button, a")
-                    
+                    button = div.query_selector("button, a")
                     if not button:
-                        logger.debug("未找到详情按钮")
                         continue
                     
                     # 点击按钮打开详情页
-                    logger.debug("点击 View All Info 按钮...")
                     try:
                         with self.page.context.expect_page() as new_page_info:
                             button.click()
@@ -207,11 +380,13 @@ class PeopleSearchNameScraper:
                         detail_page = new_page_info.value
                         time.sleep(2)
                         
-                        # 等待详情页加载
-                        try:
-                            detail_page.wait_for_selector("span:has-text('Wireless'), span:has-text('Mobile')", timeout=10000)
-                        except:
-                            pass
+                        # 检查详情页是否需要验证
+                        detail_content = detail_page.content()
+                        if self._is_verification_page(detail_content):
+                            logger.warning("⚠️ 详情页需要验证")
+                            logger.info("等待验证完成... (按任何键继续)")
+                            input()
+                            time.sleep(2)
                         
                         # 提取电话
                         phones = self._extract_phones_from_detail_page(detail_page)
@@ -221,12 +396,9 @@ class PeopleSearchNameScraper:
                                 results.append({
                                     "name": person_name,
                                     "age": age,
-                                    "location": location,
                                     "phone": phone
                                 })
-                                logger.info(f"✓ 保存: {person_name} (年龄: {age}) - {phone}")
-                        else:
-                            logger.debug(f"未找到 {person_name} 的 Wireless 电话")
+                                logger.info(f"✓ 保存: {person_name} - {phone}")
                         
                         detail_page.close()
                     except Exception as e:
@@ -234,52 +406,38 @@ class PeopleSearchNameScraper:
                         continue
                     
                 except Exception as e:
-                    logger.debug(f"处理卡片出错: {e}")
+                    logger.debug(f"处理结果项出错: {e}")
                     continue
             
-            logger.info(f"共处理 {processed_count} 个结果，提取 {len(results)} 个符合条件的记录")
             return results
             
         except Exception as e:
-            logger.error(f"提取结果出错: {e}")
-            import traceback
-            traceback.print_exc()
+            logger.error(f"搜索失败: {e}")
             return []
     
     def _extract_phones_from_detail_page(self, page) -> list:
-        """从详情页提取 Wireless 电话号码"""
+        """从详情页提取电话号码"""
         phones = []
         
         try:
             page_text = page.content()
             
             # 查找所有包含 "Wireless" 或 "Mobile" 的元素
-            phone_elements = page.query_selector_all("span, div, td, tr")
-            
-            logger.debug(f"详情页总共有 {len(phone_elements)} 个元素")
+            phone_elements = page.query_selector_all("span, div, td")
             
             for elem in phone_elements:
                 try:
                     elem_text = elem.inner_text()
                     
-                    # 检查是否包含 "Wireless" 或 "Mobile"
-                    if "Wireless" not in elem_text and "wireless" not in elem_text and "Mobile" not in elem_text and "mobile" not in elem_text:
-                        continue
-                    
-                    logger.debug(f"找到包含 Wireless/Mobile 的元素: {elem_text[:100]}")
-                    
-                    # 提取电话号码
-                    phone_match = re.search(r'\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}', elem_text)
-                    if phone_match:
-                        phone = phone_match.group(0).strip()
-                        if phone not in phones:
-                            phones.append(phone)
-                            logger.info(f"  ✓ 找到 Wireless 电话: {phone}")
-                    else:
-                        logger.debug(f"元素中没有找到电话号码格式")
-                
-                except Exception as e:
-                    logger.debug(f"处理电话元素出错: {e}")
+                    if "Wireless" in elem_text or "Mobile" in elem_text:
+                        # 提取电话号码
+                        phone_match = re.search(r'\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}', elem_text)
+                        if phone_match:
+                            phone = phone_match.group(0)
+                            if phone not in phones:
+                                phones.append(phone)
+                                logger.info(f"  ✓ 找到电话: {phone}")
+                except:
                     continue
             
             return phones
