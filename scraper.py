@@ -81,26 +81,45 @@ class PeopleSearchNameScraper:
         except Exception as e:
             logger.debug(f"关闭浏览器时出错: {e}")
     
-    def _is_verification_page(self, html: str) -> bool:
-        """检查是否是验证页面而不是搜索结果"""
+    def _is_real_verification_page(self, html: str) -> bool:
+        """
+        检查是否是真正的验证页面（不是包含搜索结果的页面）
+        优先检查是否有搜索结果标志，而不是仅检查 cloudflare 关键词
+        """
+        # 首先检查是否有搜索结果标志
+        result_indicators = [
+            "Approximate Age",
+            "Current Location",
+            "People in U.S. Named",
+            "View All Info",
+            "Used to Live"
+        ]
+        
+        html_lower = html.lower()
+        
+        # 如果有搜索结果标志，则不是验证页面
+        for indicator in result_indicators:
+            if indicator.lower() in html_lower:
+                logger.debug(f"✓ 找到搜索结果标志: {indicator}")
+                return False
+        
+        # 如果没有搜索结果标志，检查是否是验证页面
         verification_keywords = [
             "Performing security verification",
             "Incompatible browser",
             "security verification",
-            "cloudflare",
-            "challenges.cloudflare",
-            "just a moment"
+            "challenges.cloudflare.com",
+            "just a moment",
+            "challenge-form"
         ]
-        
-        html_lower = html.lower()
         
         for keyword in verification_keywords:
             if keyword.lower() in html_lower:
                 logger.warning(f"⚠️ 检测到验证页面关键词: {keyword}")
                 return True
         
-        # 检查是否没有搜索结果标志
-        if len(html) < 5000:  # 验证页面通常较小
+        # 如果 HTML 很小且没有搜索结果，可能是验证页面
+        if len(html) < 5000:
             logger.warning(f"⚠️ HTML 内容较小 ({len(html)} 字节)，可能是验证页面")
             return True
         
@@ -125,8 +144,8 @@ class PeopleSearchNameScraper:
                 page_content = self._fetch_with_cloudscraper(search_url)
                 
                 if page_content:
-                    # 检查是否是验证页面
-                    if self._is_verification_page(page_content):
+                    # 检查是否是真正的验证页面
+                    if self._is_real_verification_page(page_content):
                         logger.warning("⚠️ cloudscraper 返回验证页面，切换到浏览器模式...")
                     else:
                         logger.info("✓ 获取到真实搜索结果")
@@ -144,7 +163,7 @@ class PeopleSearchNameScraper:
             
             # 检查是否需要处理验证
             page_content = self.page.content()
-            if self._is_verification_page(page_content):
+            if self._is_real_verification_page(page_content):
                 logger.warning("⚠️ 浏览器页面也是验证页面")
                 logger.info("📌 需要手动完成 Cloudflare 验证")
                 logger.info("等待用户完成验证... (按任何键继续)")
@@ -178,10 +197,6 @@ class PeopleSearchNameScraper:
             
             if response.status_code == 200:
                 logger.info(f"✓ 请求成功 (状态码: {response.status_code}, HTML长度: {len(response.text)} 字节)")
-                
-                # 输出 HTML 头部用于调试
-                logger.debug(f"HTML 头部 (前 500 字): {response.text[:500]}")
-                
                 return response.text
             else:
                 logger.warning(f"⚠️ 请求返回状态码: {response.status_code}")
@@ -201,8 +216,8 @@ class PeopleSearchNameScraper:
             logger.info("开始解析 HTML 内容...")
             logger.debug(f"HTML 长度: {len(page_html)} 字节")
             
-            # 检查是否是验证页面
-            if self._is_verification_page(page_html):
+            # 最终验证：检查是否是真正的验证页面
+            if self._is_real_verification_page(page_html):
                 logger.warning("⚠️ 页面是验证页面，不是搜索结果")
                 return []
             
@@ -214,7 +229,6 @@ class PeopleSearchNameScraper:
             # 检查是否有 "Approximate Age"
             if "Approximate Age" not in page_html:
                 logger.warning("⚠️ 页面中未找到 'Approximate Age'")
-                logger.debug(f"页面内容片段: {page_html[1000:2000]}")
                 return []
             
             logger.info("✓ 页面中找到 'Approximate Age'")
@@ -307,7 +321,7 @@ class PeopleSearchNameScraper:
             
             # 检查是否需要处理验证
             page_content = self.page.content()
-            if self._is_verification_page(page_content):
+            if self._is_real_verification_page(page_content):
                 logger.warning("⚠️ 需要手动完成验证")
                 logger.info("等待用户完成验证... (按任何键继续)")
                 input()
@@ -366,7 +380,7 @@ class PeopleSearchNameScraper:
                         
                         # 检查详情页是否需要验证
                         detail_content = detail_page.content()
-                        if self._is_verification_page(detail_content):
+                        if self._is_real_verification_page(detail_content):
                             logger.warning("⚠️ 详情页需要验证")
                             logger.info("等待验证完成... (按任何键继续)")
                             input()
