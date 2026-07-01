@@ -75,10 +75,13 @@ class PeopleSearchNameScraper:
             
             time.sleep(1)
             
-            # 检查是否有其他错误
+            # 检查是否有真正的错误页面（JSON 错误响应）
             page_text = self.page.content()
-            if "validation_failed" in page_text or ("invalid" in page_text.lower() and "tahoe" in page_text.lower()):
-                logger.warning("⚠️ 搜索参数错误")
+            
+            # 只检查真正的错误 JSON 响应
+            if "{" in page_text and "error" in page_text.lower() and "validation_failed" in page_text:
+                logger.warning("⚠️ 服务器返回错误")
+                logger.debug(f"错误内容: {page_text[:200]}")
                 return []
             
             # 检查是否有结果
@@ -159,6 +162,12 @@ class PeopleSearchNameScraper:
             
             logger.info(f"找到 {len(items)} 个结果项")
             
+            # 如果没找到结果，尝试其他选择器
+            if len(items) == 0:
+                logger.debug("尝试备选选择器...")
+                items = self.page.query_selector_all("div")
+                logger.info(f"尝试全部 div，找到 {len(items)} 个")
+            
             for idx, item in enumerate(items):
                 try:
                     item_text = item.inner_text()
@@ -166,7 +175,11 @@ class PeopleSearchNameScraper:
                     if not item_text or len(item_text.strip()) < 5:
                         continue
                     
-                    logger.debug(f"处理结果项 {idx+1}: {item_text[:100]}")
+                    # 检查是否包含年龄信息（这是判断是否是人物卡片的关键）
+                    if "Approximate Age" not in item_text and "age" not in item_text.lower():
+                        continue
+                    
+                    logger.debug(f"处理结果项 {idx+1}: {item_text[:150]}")
                     
                     # 提取名字 - 寻找加粗、橙色或标题标签
                     name_elem = item.query_selector("h3, h2, .name, strong, b, [style*='bold'], [style*='orange']")
@@ -244,6 +257,8 @@ class PeopleSearchNameScraper:
             
         except Exception as e:
             logger.error(f"提取页面结果出错: {e}")
+            import traceback
+            traceback.print_exc()
             return []
     
     def _extract_wireless_phones(self, page) -> list:
