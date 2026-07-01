@@ -9,3 +9,8 @@ search_log.txt
 *.xlsx
 chromedriver.exe
 phone_numbers.txt
+
+# backups
+*.bak
+*.backup
+*.broken.*
