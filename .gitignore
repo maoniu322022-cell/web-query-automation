@@ -1,0 +1,11 @@
+﻿__pycache__/
+*.pyc
+.venv/
+venv/
+
+results.csv
+search.log
+search_log.txt
+*.xlsx
+chromedriver.exe
+phone_numbers.txt
