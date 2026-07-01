@@ -1,8 +1,9 @@
 import logging
-import time
+import asyncio
 from concurrent.futures import ThreadPoolExecutor, as_completed
-from scraper import PeopleSearchNowScraper
+from scraper import PeopleSearchNameScraper
 from data_handler import DataHandler, results_lock
+import subprocess
 
 logging.basicConfig(
     level=logging.INFO,
@@ -12,69 +13,73 @@ logging.basicConfig(
 logger = logging.getLogger(__name__)
 
 # 并发数（同时开启的浏览器数）
-MAX_WORKERS = 3  # 建议 2-4 个，根据电脑配置调整
+MAX_WORKERS = 3
 
-def search_worker(phone: str, worker_id: int, total: int) -> dict:
+def search_worker(name: str, worker_id: int) -> list:
     """
     单个线程的工作函数
     """
     try:
-        scraper = PeopleSearchNowScraper()
-        logger.info(f"[Worker {worker_id}] 开始查询: {phone}")
-        result = scraper.search_by_phone(phone)
-        scraper.close()
+        scraper = PeopleSearchNameScraper()
         
-        if result:
-            logger.info(f"[Worker {worker_id}] ✓ 找到结果: {phone}")
-            return result
-        else:
-            logger.info(f"[Worker {worker_id}] ✗ 未找到结果: {phone}")
-            return None
+        # 运行异步爬虫
+        loop = asyncio.new_event_loop()
+        asyncio.set_event_loop(loop)
+        
+        results = loop.run_until_complete(scraper.search_by_name(name))
+        loop.close()
+        
+        scraper = None
+        return results
+        
     except Exception as e:
-        logger.error(f"[Worker {worker_id}] 查询失败 {phone}: {e}")
-        return None
+        logger.error(f"[Worker {worker_id}] 查询失败 {name}: {e}")
+        return []
 
 def main():
     logger.info("=" * 60)
-    logger.info(f"开始 People Search Now 反向查询 (多线程模式, {MAX_WORKERS} 个并发)")
+    logger.info(f"开始按名字搜索 (多线程模式, {MAX_WORKERS} 个并发)")
     logger.info("=" * 60)
     
     handler = DataHandler()
-    phones = handler.load_phones("phones.txt")
+    names = handler.load_names("names.txt")
     
-    if not phones:
-        logger.error("No phones found!")
+    if not names:
+        logger.error("No names found!")
         return
     
-    logger.info(f"✓ 读取了 {len(phones)} 个电话号码")
+    logger.info(f"✓ 读取了 {len(names)} 个名字")
+    logger.info(f"✓ 筛选条件: 年龄 53-75 岁, 仅保留 Wireless 电话")
     logger.info(f"✓ 将使用 {MAX_WORKERS} 个线程并发查询")
     logger.info("")
     
-    results = []
+    all_results = []
     completed_count = 0
     
     try:
         # 使用线程池执行器
         with ThreadPoolExecutor(max_workers=MAX_WORKERS) as executor:
             # 提交所有任务
-            future_to_phone = {
-                executor.submit(search_worker, phone, i % MAX_WORKERS + 1, len(phones)): phone 
-                for i, phone in enumerate(phones)
+            future_to_name = {
+                executor.submit(search_worker, name, i % MAX_WORKERS + 1): name 
+                for i, name in enumerate(names)
             }
             
             # 处理完成的任务
-            for future in as_completed(future_to_phone):
-                phone = future_to_phone[future]
+            for future in as_completed(future_to_name):
+                name = future_to_name[future]
                 completed_count += 1
                 
                 try:
-                    result = future.result()
-                    if result:
+                    results = future.result()
+                    if results:
                         with results_lock:
-                            results.append(result)
-                    logger.info(f"[进度] {completed_count}/{len(phones)} 已完成")
+                            all_results.extend(results)
+                        logger.info(f"[进度] {completed_count}/{len(names)} 已完成 - 找到 {len(results)} 条结果")
+                    else:
+                        logger.info(f"[进度] {completed_count}/{len(names)} 已完成 - 无符合条件的结果")
                 except Exception as e:
-                    logger.error(f"任务执行出错 {phone}: {e}")
+                    logger.error(f"任务执行出错 {name}: {e}")
     
     except KeyboardInterrupt:
         logger.warning("用户中止查询")
@@ -82,13 +87,22 @@ def main():
     logger.info("")
     logger.info("=" * 60)
     
-    if results:
-        logger.info(f"✓ 成功找到 {len(results)} 个结果")
-        logger.info(f"✓ 成功率: {len(results)}/{len(phones)} = {len(results)*100//len(phones)}%")
+    if all_results:
+        logger.info(f"✓ 成功找到 {len(all_results)} 条符合条件的结果")
         logger.info(f"✓ 保存到 search_results.xlsx")
-        handler.save_results(results, "search_results.xlsx")
+        handler.save_results(all_results, "search_results.xlsx")
+        
+        # 自动推送到 GitHub
+        try:
+            logger.info("正在推送到 GitHub...")
+            subprocess.run(["git", "add", "search_results.xlsx"], check=True)
+            subprocess.run(["git", "commit", "-m", "更新查询结果"], check=True)
+            subprocess.run(["git", "push", "origin", "search_names"], check=True)
+            logger.info("✓ 已推送到 GitHub")
+        except Exception as e:
+            logger.warning(f"推送失败: {e}")
     else:
-        logger.info("未找到任何结果")
+        logger.info("未找到符合条件的结果")
 
 if __name__ == "__main__":
     main()
