@@ -12,7 +12,7 @@ class PeopleSearchNameScraper:
         self.playwright = None
         self.context = None
         self.base_url = "https://www.peoplesearchnow.com"
-        self.search_url = "https://www.peoplesearchnow.com/name"
+        self.search_url = "https://www.peoplesearchnow.com/person"
         
     def init_browser(self):
         """初始化浏览器"""
@@ -55,6 +55,7 @@ class PeopleSearchNameScraper:
         
         try:
             # 访问搜索页面
+            # URL 格式: https://www.peoplesearchnow.com/person/{name-with-dashes}
             search_url = f"{self.search_url}/{name.replace(' ', '-').lower()}"
             logger.info(f"正在搜索: {name}")
             logger.info(f"访问 URL: {search_url}")
@@ -76,7 +77,7 @@ class PeopleSearchNameScraper:
             
             # 检查是否有结果
             page_text = self.page.content()
-            if "0 people" in page_text or "No results" in page_text:
+            if "0 people" in page_text or "No results" in page_text or "404" in page_text:
                 logger.info(f"未找到 '{name}' 的搜索结果")
                 return []
             
@@ -131,6 +132,10 @@ class PeopleSearchNameScraper:
                 input("按 Enter 继续...")
                 return True
             
+            if "validation_failed" in page_text or "invalid" in page_text.lower():
+                logger.warning("⚠️ 搜索参数错误")
+                return True
+            
             if "Service Unavailable" in page_text or "error" in page_text.lower():
                 logger.warning("⚠️ 网络连接错误或服务不可用")
                 logger.warning("请检查网络，按 F5 刷新")
@@ -154,12 +159,8 @@ class PeopleSearchNameScraper:
             
             # 尝试找到包含人物信息的容器
             items = self.page.query_selector_all(
-                "[data-id], .result, .person-result, article, .profile-card"
+                "[data-id], .result, .person-result, article, .profile-card, div[class*='result']"
             )
-            
-            if not items:
-                # 尝试备选选择器
-                items = self.page.query_selector_all("div[class*='result'], div[class*='person']")
             
             logger.info(f"找到 {len(items)} 个结果项")
             
@@ -172,8 +173,8 @@ class PeopleSearchNameScraper:
                     
                     logger.debug(f"处理结果项 {idx+1}: {item_text[:100]}")
                     
-                    # 提取名字 - 通常在第一行或最大的文本
-                    name_elem = item.query_selector("h2, h3, .name, strong")
+                    # 提取名字 - 通常是加粗或橙色的文本
+                    name_elem = item.query_selector("h2, h3, .name, strong, b")
                     if not name_elem:
                         name_elem = item.query_selector("a")
                     
@@ -198,12 +199,13 @@ class PeopleSearchNameScraper:
                         continue
                     
                     # 提取位置
-                    location_elem = item.query_selector(".location, .city, [class*='location']")
+                    location_elem = item.query_selector(".location, .city, [class*='location']") or \
+                                   item.query_selector("span:has-text('Location')")
                     location = location_elem.text_content().strip() if location_elem else "Unknown"
                     
                     # 点击 "View All Info" 获取详细信息
                     view_info_btn = item.query_selector(
-                        "button:has-text('View All Info'), a:has-text('View All Info'), .view-info, .more-info"
+                        "button:has-text('View All Info'), a:has-text('View All Info'), [class*='view'], [class*='info']"
                     )
                     
                     if view_info_btn:
