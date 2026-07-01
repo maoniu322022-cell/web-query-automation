@@ -15,14 +15,35 @@ class PeopleSearchNameScraper:
         self.search_url = "https://www.peoplesearchnow.com/person"
         
     def init_browser(self):
-        """初始化浏览器"""
+        """初始化浏览器 - 配置以绕过 Cloudflare"""
         try:
             self.playwright = sync_playwright().start()
-            self.browser = self.playwright.chromium.launch(headless=False)
-            self.context = self.browser.new_context()
+            
+            # 使用 stealth 模式和特殊的请求头
+            self.browser = self.playwright.chromium.launch(
+                headless=False,
+                args=[
+                    '--disable-blink-features=AutomationControlled',
+                    '--disable-dev-shm-usage'
+                ]
+            )
+            
+            self.context = self.browser.new_context(
+                user_agent='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'
+            )
+            
             self.page = self.context.new_page()
             self.page.set_default_timeout(30000)
-            logger.info("✓ 浏览器已启动")
+            
+            # 添加请求头
+            self.page.set_extra_http_headers({
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+                'Cache-Control': 'max-age=0',
+                'Upgrade-Insecure-Requests': '1'
+            })
+            
+            logger.info("✓ 浏览器已启动（已配置以绕过 Cloudflare）")
         except Exception as e:
             logger.error(f"浏览器初始化失败: {e}")
             raise
@@ -59,23 +80,14 @@ class PeopleSearchNameScraper:
             logger.info(f"正在搜索: {name}")
             logger.info(f"访问 URL: {search_url}")
             
-            self.page.goto(search_url, wait_until="commit")
+            self.page.goto(search_url, wait_until="networkidle")
             
-            # 等待页面加载
-            try:
-                self.page.wait_for_load_state("networkidle", timeout=15000)
-            except:
-                pass
+            time.sleep(3)
+            
+            # 等待可能的 Cloudflare 验证
+            self._wait_for_cloudflare_bypass()
             
             time.sleep(2)
-            
-            # 处理 Cloudflare 验证
-            self._handle_cloudflare()
-            
-            # 检查是否需要处理 Error 1015
-            self._handle_error_1015()
-            
-            time.sleep(1)
             
             # 获取页面完整内容用于调试
             page_content = self.page.content()
@@ -112,7 +124,7 @@ class PeopleSearchNameScraper:
                     break
                 
                 page_num += 1
-                time.sleep(1)
+                time.sleep(2)
             
             return results
             
@@ -125,52 +137,51 @@ class PeopleSearchNameScraper:
             traceback.print_exc()
             return []
     
-    def _handle_cloudflare(self):
-        """处理 Cloudflare 安全验证"""
+    def _wait_for_cloudflare_bypass(self):
+        """等待 Cloudflare 验证通过或手动处理"""
         try:
+            logger.info("等待页面完全加载（可能需要处理 Cloudflare）...")
+            
+            # 尝试多种方式检测 Cloudflare
             page_text = self.page.content()
             
-            # 检查是否出现 Cloudflare 验证页面
-            if "cloudflare" in page_text.lower() or "请验证您是真人" in page_text or "verify" in page_text.lower():
-                logger.info("⚠️ 检测到 Cloudflare 验证页面")
+            if "cloudflare" in page_text.lower() or "challenge" in page_text.lower():
+                logger.warning("⚠️ 检测到 Cloudflare 挑战页面")
                 
-                # 尝试找到验证复选框
-                checkbox = self.page.query_selector("input[type='checkbox']")
-                if checkbox:
-                    logger.info("✓ 找到验证复选框，自动点击...")
-                    checkbox.click()
-                    time.sleep(3)
+                # 方式 1: 尝试点击 iframe 内的复选框
+                try:
+                    # 获取所有 iframe
+                    iframes = self.page.frames
+                    logger.info(f"页面上有 {len(iframes)} 个 iframe")
                     
-                    # 等待验证完成
-                    try:
-                        self.page.wait_for_load_state("networkidle", timeout=10000)
-                    except:
-                        pass
-                    
-                    time.sleep(2)
+                    for iframe in iframes:
+                        try:
+                            iframe_content = iframe.content()
+                            if "checkbox" in iframe_content.lower():
+                                logger.info("在 iframe 中找到复选框，尝试点击...")
+                                checkbox = iframe.query_selector("input[type='checkbox']")
+                                if checkbox:
+                                    checkbox.click()
+                                    logger.info("✓ 已点击复选框")
+                                    time.sleep(3)
+                                    break
+                        except:
+                            continue
+                except Exception as e:
+                    logger.debug(f"iframe 处理失败: {e}")
+                
+                # 方式 2: 等待挑战解决
+                logger.info("等待 Cloudflare 验证完成...")
+                try:
+                    self.page.wait_for_load_state("networkidle", timeout=15000)
                     logger.info("✓ Cloudflare 验证完成")
-                else:
-                    logger.warning("⚠️ 未找到验证复选框")
-        except Exception as e:
-            logger.debug(f"处理 Cloudflare 验证时出错: {e}")
-    
-    def _handle_error_1015(self):
-        """处理 Error 1015（限流）- 等待用户刷新后继续"""
-        try:
-            page_text = self.page.content()
-            
-            if "1015" in page_text:
-                logger.warning("⚠️ 遇到 Error 1015 - 网站限流")
-                logger.warning("请按照以下步骤操作:")
-                logger.warning("1. 切换 VPN")
-                logger.warning("2. 按 F5 刷新")
-                logger.warning("3. 按 Enter 继续")
-                input("按 Enter 继续...")
+                except:
+                    logger.warning("⚠️ 验证等待超时，继续处理...")
+            else:
+                logger.info("✓ 未检测到 Cloudflare 挑战")
                 
-                # 等待页面刷新
-                time.sleep(2)
         except Exception as e:
-            logger.debug(f"处理 1015 错误时出错: {e}")
+            logger.debug(f"处理 Cloudflare 时出错: {e}")
     
     def _extract_results_from_page(self, search_name: str) -> list:
         """
@@ -188,6 +199,7 @@ class PeopleSearchNameScraper:
                 logger.info("✓ 页面中找到 'Approximate Age' 文本")
             else:
                 logger.warning("⚠️ 页面中未找到 'Approximate Age' 文本")
+                logger.debug(f"页面内容前 1000 字: {page_text[:1000]}")
             
             # 策略 1: 尝试找到包含年龄信息的所有元素
             logger.info("尝试提取包含年龄信息的结果项...")
@@ -210,7 +222,6 @@ class PeopleSearchNameScraper:
             
             if len(result_items) == 0:
                 logger.warning("未找到包含年龄信息的结果项")
-                logger.debug(f"页面内容片段: {page_text[500:1000]}")
                 return []
             
             # 处理每个结果项
@@ -244,9 +255,7 @@ class PeopleSearchNameScraper:
                     logger.debug(f"位置: {location}")
                     
                     # 查找 View All Info 按钮
-                    view_info_btn = item.query_selector(
-                        "button, a"
-                    )
+                    view_info_btn = item.query_selector("button, a")
                     
                     if not view_info_btn:
                         logger.debug(f"未找到按钮")
@@ -285,8 +294,8 @@ class PeopleSearchNameScraper:
                         detail_page = new_page_info.value
                         time.sleep(2)
                         
-                        # 处理详情页的 Cloudflare 验证
-                        self._handle_cloudflare_on_page(detail_page)
+                        # 等待详情页加载
+                        self._wait_for_cloudflare_bypass_on_page(detail_page)
                         
                         try:
                             # 提取 Wireless 电话
@@ -321,37 +330,34 @@ class PeopleSearchNameScraper:
             traceback.print_exc()
             return []
     
-    def _handle_cloudflare_on_page(self, page):
-        """在新标签页上处理 Cloudflare 验证"""
+    def _wait_for_cloudflare_bypass_on_page(self, page):
+        """在新页面上等待 Cloudflare 验证"""
         try:
-            page_text = page.content()
+            time.sleep(2)
             
-            if "cloudflare" in page_text.lower() or "verify" in page_text.lower():
-                logger.info("✓ 新标签页需要 Cloudflare 验证，自动点击...")
-                
-                checkbox = page.query_selector("input[type='checkbox']")
-                if checkbox:
-                    checkbox.click()
-                    time.sleep(3)
-                    
-                    try:
-                        page.wait_for_load_state("networkidle", timeout=10000)
-                    except:
-                        pass
-                    
-                    time.sleep(2)
+            page_content = page.content()
+            if "cloudflare" in page_content.lower():
+                logger.info("详情页需要 Cloudflare 验证，等待中...")
+                try:
+                    page.wait_for_load_state("networkidle", timeout=10000)
+                    logger.info("✓ 详情页 Cloudflare 验证完成")
+                except:
+                    pass
         except Exception as e:
-            logger.debug(f"处理详情页 Cloudflare 验证时出错: {e}")
+            logger.debug(f"详情页验证处理失败: {e}")
     
     def _extract_name_from_item(self, item, item_text: str) -> str:
         """从结果项中提取名字"""
         # 尝试从标题标签提取
         for tag in ["h3", "h2", "h1"]:
-            title_elem = item.query_selector(tag)
-            if title_elem:
-                name = title_elem.text_content().strip()
-                if name and len(name) > 2:
-                    return name
+            try:
+                title_elem = item.query_selector(tag)
+                if title_elem:
+                    name = title_elem.text_content().strip()
+                    if name and len(name) > 2:
+                        return name
+            except:
+                pass
         
         # 从文本中提取第一行（通常是名字）
         lines = item_text.split('\n')
