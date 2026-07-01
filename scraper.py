@@ -1,4 +1,4 @@
-﻿import time
+import time
 import random
 import logging
 from typing import Dict, Optional
@@ -51,13 +51,32 @@ class PeopleSearchNowScraper:
             search_url = f"https://www.peoplesearchnow.com/phone/{formatted_phone}"
             logger.info(f"Fetch: {search_url}")
             
-            try:
-                self.page.goto(search_url, wait_until="networkidle", timeout=120000)
-            except:
-                logger.warning("Timeout, trying with domcontentloaded...")
-                self.page.goto(search_url, wait_until="domcontentloaded", timeout=30000)
+            # 只需要网络连接建立就行，不等待完全加载
+            max_retries = 3
+            retry_count = 0
             
-            time.sleep(5)
+            while retry_count < max_retries:
+                try:
+                    logger.info(f"尝试访问... (第 {retry_count + 1} 次)")
+                    # 使用 commit 模式：页面响应后立即返回，不等待网页完全加载
+                    self.page.goto(search_url, wait_until="commit", timeout=15000)
+                    logger.info("✓ 页面已加载，开始提取数据...")
+                    break
+                except Exception as e:
+                    retry_count += 1
+                    logger.warning(f"❌ 加载失败: {str(e)}")
+                    
+                    if retry_count < max_retries:
+                        logger.warning(f"⚠️  网络连接出现问题，请检查网络或切换 VPN 节点")
+                        logger.warning(f"✅ 切换完成后，在浏览器按 F5 刷新页面，然后按 Enter 继续...")
+                        input("按 Enter 继续...")
+                        time.sleep(2)
+                    else:
+                        logger.error(f"❌ 重试 {max_retries} 次仍然失败，跳过此号码")
+                        return None
+            
+            # 等待一下让页面稳定
+            time.sleep(3)
             
             html = self.page.content()
             
@@ -70,8 +89,11 @@ class PeopleSearchNowScraper:
                 
                 # 自动刷新页面
                 logger.info("Refreshing page...")
-                self.page.reload(wait_until="networkidle")
-                time.sleep(5)
+                try:
+                    self.page.reload(wait_until="commit", timeout=15000)
+                except:
+                    logger.warning("刷新失败，但继续尝试提取数据...")
+                time.sleep(3)
                 html = self.page.content()
             
             logger.info(f"HTML length: {len(html)}")
@@ -124,3 +146,4 @@ class PeopleSearchNowScraper:
                 self.playwright.stop()
         except:
             pass
+
