@@ -55,7 +55,6 @@ class PeopleSearchNameScraper:
         
         try:
             # 访问搜索页面
-            # URL 格式: https://www.peoplesearchnow.com/person/{name-with-dashes}
             search_url = f"{self.search_url}/{name.replace(' ', '-').lower()}"
             logger.info(f"正在搜索: {name}")
             logger.info(f"访问 URL: {search_url}")
@@ -75,23 +74,23 @@ class PeopleSearchNameScraper:
             
             time.sleep(1)
             
-            # 检查是否有真正的错误页面（JSON 错误响应）
-            page_text = self.page.content()
+            # 获取页面完整内容用于调试
+            page_content = self.page.content()
+            logger.debug(f"页面长度: {len(page_content)} 字节")
             
-            # 只检查真正的错误 JSON 响应
-            if "{" in page_text and "error" in page_text.lower() and "validation_failed" in page_text:
+            # 检查是否有真正的错误 JSON 响应
+            if "{" in page_content and "error" in page_content.lower() and "validation_failed" in page_content:
                 logger.warning("⚠️ 服务器返回错误")
-                logger.debug(f"错误内容: {page_text[:200]}")
                 return []
             
             # 检查是否有结果
-            if "0 people" in page_text or "No results" in page_text or "404" in page_text:
+            if "0 people" in page_content or "No results" in page_content or "404" in page_content:
                 logger.info(f"未找到 '{name}' 的搜索结果")
                 return []
             
             # 获取当前页面的所有结果
             page_num = 1
-            max_pages = 5  # 最多处理5页
+            max_pages = 5
             
             while page_num <= max_pages:
                 logger.info(f"处理第 {page_num} 页")
@@ -122,9 +121,6 @@ class PeopleSearchNameScraper:
             import traceback
             traceback.print_exc()
             return []
-        finally:
-            # 不关闭浏览器，保留给下一次使用
-            pass
     
     def _handle_error_1015(self):
         """处理 Error 1015（限流）- 等待用户刷新后继续"""
@@ -146,111 +142,140 @@ class PeopleSearchNameScraper:
     
     def _extract_results_from_page(self, search_name: str) -> list:
         """
-        从当前页提取结果
+        从当前页提取结果 - 使用多种策略
         """
         results = []
         
         try:
-            # 等待结果加载
             time.sleep(1)
             
-            # 尝试找到包含人物信息的容器
-            # 根据网站结构，每个人物结果通常在一个独立的 div 或 card 中
-            items = self.page.query_selector_all(
-                "div[class*='result'], div[class*='person'], article, .profile-card, [class*='card']"
-            )
+            page_text = self.page.content()
             
-            logger.info(f"找到 {len(items)} 个结果项")
+            # 调试：输出页面中包含 "Approximate Age" 的部分
+            if "Approximate Age" in page_text:
+                logger.info("✓ 页面中找到 'Approximate Age' 文本")
+            else:
+                logger.warning("⚠️ 页面中未找到 'Approximate Age' 文本")
             
-            # 如果没找到结果，尝试其他选择器
-            if len(items) == 0:
-                logger.debug("尝试备选选择器...")
-                items = self.page.query_selector_all("div")
-                logger.info(f"尝试全部 div，找到 {len(items)} 个")
+            # 策略 1: 尝试找到包含年龄信息的所有元素
+            logger.info("尝试提取包含年龄信息的结果项...")
             
-            for idx, item in enumerate(items):
+            # 获取所有可能的容器
+            all_divs = self.page.query_selector_all("div")
+            logger.debug(f"页面总共有 {len(all_divs)} 个 div")
+            
+            # 过滤出包含 "Approximate Age" 的 div
+            result_items = []
+            for div in all_divs:
+                try:
+                    div_text = div.inner_text()
+                    if "Approximate Age" in div_text and len(div_text) > 50:
+                        result_items.append(div)
+                except:
+                    continue
+            
+            logger.info(f"找到 {len(result_items)} 个包含年龄信息的结果项")
+            
+            if len(result_items) == 0:
+                logger.warning("未找到包含年龄信息的结果项")
+                logger.debug(f"页面内容片段: {page_text[500:1000]}")
+                return []
+            
+            # 处理每个结果项
+            for idx, item in enumerate(result_items):
                 try:
                     item_text = item.inner_text()
+                    logger.debug(f"\n=== 处理结果项 {idx+1} ===")
+                    logger.debug(f"内容: {item_text[:200]}")
                     
-                    if not item_text or len(item_text.strip()) < 5:
+                    # 提取名字
+                    name = self._extract_name_from_item(item, item_text)
+                    if not name:
+                        logger.debug(f"无法提取名字")
                         continue
                     
-                    # 检查是否包含年龄信息（这是判断是否是人物卡片的关键）
-                    if "Approximate Age" not in item_text and "age" not in item_text.lower():
-                        continue
+                    logger.debug(f"名字: {name}")
                     
-                    logger.debug(f"处理结果项 {idx+1}: {item_text[:150]}")
-                    
-                    # 提取名字 - 寻找加粗、橙色或标题标签
-                    name_elem = item.query_selector("h3, h2, .name, strong, b, [style*='bold'], [style*='orange']")
-                    if not name_elem:
-                        name_elem = item.query_selector("a")
-                    
-                    if name_elem:
-                        name = name_elem.text_content().strip()
-                    else:
-                        # 从整个文本中提取第一行作为名字
-                        lines = item_text.split('\n')
-                        name = lines[0].strip() if lines else "Unknown"
-                    
-                    if not name or len(name) < 2:
-                        continue
-                    
-                    # 提取年龄 - 查找 "Approximate Age: XX" 模式
+                    # 提取年龄
                     age = self._extract_age(item_text)
-                    
-                    logger.debug(f"名字: {name}, 年龄: {age}")
+                    logger.debug(f"年龄: {age}")
                     
                     # 筛选年龄 53-75
                     if not age or age < 53 or age > 75:
                         logger.debug(f"跳过: {name} (年龄: {age})")
                         continue
                     
-                    # 提取位置
-                    location_elem = item.query_selector(".location, .city, [class*='location']")
-                    location = location_elem.text_content().strip() if location_elem else "Unknown"
+                    logger.info(f"✓ 符合条件: {name} (年龄: {age})")
                     
-                    # 点击 "View All Info" 获取详细信息
+                    # 提取位置
+                    location = self._extract_location_from_item(item_text)
+                    logger.debug(f"位置: {location}")
+                    
+                    # 查找 View All Info 按钮
                     view_info_btn = item.query_selector(
-                        "button:has-text('View All Info'), a:has-text('View All Info'), [class*='view']:has-text('Info')"
+                        "button, a"
                     )
                     
-                    if view_info_btn:
-                        try:
-                            logger.debug(f"点击 View All Info 获取 {name} 的详情")
-                            
-                            # 在新标签页中打开
-                            with self.page.context.expect_page() as new_page_info:
-                                view_info_btn.click()
-                            
-                            detail_page = new_page_info.value
-                            time.sleep(2)
-                            
+                    if not view_info_btn:
+                        logger.debug(f"未找到按钮")
+                        continue
+                    
+                    # 检查按钮文本
+                    btn_text = ""
+                    try:
+                        btn_text = view_info_btn.inner_text()
+                    except:
+                        pass
+                    
+                    if "View All Info" not in btn_text and "view" not in btn_text.lower():
+                        # 尝试找其他按钮
+                        buttons = item.query_selector_all("button, a")
+                        view_info_btn = None
+                        for btn in buttons:
                             try:
-                                # 提取 Wireless 电话
-                                phones = self._extract_wireless_phones(detail_page)
-                                
-                                if phones:
-                                    for phone in phones:
-                                        results.append({
-                                            "name": name,
-                                            "age": age,
-                                            "phone": phone,
-                                            "location": location
-                                        })
-                                        logger.info(f"✓ 保存: {name} (年龄: {age}) - {phone}")
-                                else:
-                                    logger.debug(f"未找到 {name} 的 Wireless 电话")
-                            finally:
-                                detail_page.close()
-                        except Exception as e:
-                            logger.debug(f"处理详情页出错: {e}")
+                                if "View" in btn.inner_text() or "view" in btn.inner_text().lower():
+                                    view_info_btn = btn
+                                    break
+                            except:
+                                continue
+                        
+                        if not view_info_btn:
+                            logger.debug(f"未找到 View All Info 按钮")
                             continue
-                    else:
-                        logger.debug(f"未找到 {name} 的 View All Info 按钮")
+                    
+                    logger.debug(f"点击按钮获取详情...")
+                    
+                    try:
+                        # 在新标签页中打开
+                        with self.page.context.expect_page() as new_page_info:
+                            view_info_btn.click()
+                        
+                        detail_page = new_page_info.value
+                        time.sleep(2)
+                        
+                        try:
+                            # 提取 Wireless 电话
+                            phones = self._extract_wireless_phones(detail_page)
+                            
+                            if phones:
+                                for phone in phones:
+                                    results.append({
+                                        "name": name,
+                                        "age": age,
+                                        "phone": phone,
+                                        "location": location
+                                    })
+                                    logger.info(f"✓ 保存: {name} (年龄: {age}) - {phone}")
+                            else:
+                                logger.debug(f"未找到 {name} 的 Wireless 电话")
+                        finally:
+                            detail_page.close()
+                    except Exception as e:
+                        logger.debug(f"处理详情页出错: {e}")
+                        continue
                     
                 except Exception as e:
-                    logger.debug(f"提取结果项出错: {e}")
+                    logger.debug(f"处理结果项出错: {e}")
                     continue
             
             return results
@@ -260,6 +285,34 @@ class PeopleSearchNameScraper:
             import traceback
             traceback.print_exc()
             return []
+    
+    def _extract_name_from_item(self, item, item_text: str) -> str:
+        """从结果项中提取名字"""
+        # 尝试从标题标签提取
+        for tag in ["h3", "h2", "h1"]:
+            title_elem = item.query_selector(tag)
+            if title_elem:
+                name = title_elem.text_content().strip()
+                if name and len(name) > 2:
+                    return name
+        
+        # 从文本中提取第一行（通常是名字）
+        lines = item_text.split('\n')
+        for line in lines:
+            line = line.strip()
+            if line and len(line) > 2 and "Approximate" not in line and "Current" not in line:
+                return line
+        
+        return None
+    
+    def _extract_location_from_item(self, text: str) -> str:
+        """从结果项中提取位置"""
+        # 查找 "Current Location:" 后面的内容
+        match = re.search(r'Current\s+Location[:\s]+([^,\n]+(?:,\s*[A-Z]{2})?)', text, re.IGNORECASE)
+        if match:
+            return match.group(1).strip()
+        
+        return "Unknown"
     
     def _extract_wireless_phones(self, page) -> list:
         """
@@ -277,7 +330,7 @@ class PeopleSearchNameScraper:
                 ".phone-item, [class*='phone'], .number, .contact, span, div, tr, td"
             )
             
-            logger.debug(f"在详情页找到 {len(phone_items)} 个可能的电话项")
+            logger.debug(f"在详情页找到 {len(phone_items)} 个可能的元素")
             
             for item in phone_items:
                 try:
@@ -344,7 +397,7 @@ class PeopleSearchNameScraper:
                 match = re.search(pattern, text, re.IGNORECASE)
                 if match:
                     age = int(match.group(1))
-                    if 10 < age < 120:  # 基本合理性检查
+                    if 10 < age < 120:
                         return age
         except:
             pass
@@ -356,7 +409,6 @@ class PeopleSearchNameScraper:
         从文本中提取电话号码
         """
         try:
-            # 匹配格式: (123) 456-7890 或 123-456-7890 等
             patterns = [
                 r'\(?\d{3}\)?[\s.-]?\d{3}[\s.-]?\d{4}',
                 r'\d{3}[\s.-]?\d{3}[\s.-]?\d{4}',
