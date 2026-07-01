@@ -81,6 +81,31 @@ class PeopleSearchNameScraper:
         except Exception as e:
             logger.debug(f"关闭浏览器时出错: {e}")
     
+    def _is_verification_page(self, html: str) -> bool:
+        """检查是否是验证页面而不是搜索结果"""
+        verification_keywords = [
+            "Performing security verification",
+            "Incompatible browser",
+            "security verification",
+            "cloudflare",
+            "challenges.cloudflare",
+            "just a moment"
+        ]
+        
+        html_lower = html.lower()
+        
+        for keyword in verification_keywords:
+            if keyword.lower() in html_lower:
+                logger.warning(f"⚠️ 检测到验证页面关键词: {keyword}")
+                return True
+        
+        # 检查是否没有搜索结果标志
+        if len(html) < 5000:  # 验证页面通常较小
+            logger.warning(f"⚠️ HTML 内容较小 ({len(html)} 字节)，可能是验证页面")
+            return True
+        
+        return False
+    
     def search_by_name(self, name: str) -> list:
         """
         按名字搜索
@@ -98,11 +123,18 @@ class PeopleSearchNameScraper:
             if self.scraper:
                 logger.info("使用 cloudscraper 进行请求...")
                 page_content = self._fetch_with_cloudscraper(search_url)
+                
                 if page_content:
-                    results = self._extract_results_from_html(page_content, name)
-                    return results
+                    # 检查是否是验证页面
+                    if self._is_verification_page(page_content):
+                        logger.warning("⚠️ cloudscraper 返回验证页面，切换到浏览器模式...")
+                    else:
+                        logger.info("✓ 获取到真实搜索结果")
+                        results = self._extract_results_from_html(page_content, name)
+                        if results:
+                            return results
             
-            # 如果 cloudscraper 失败，使用 Playwright
+            # 如果 cloudscraper 失败或返回验证页面，使用 Playwright
             logger.info("使用 Playwright 进行请求...")
             if not self.page:
                 self.init_browser()
@@ -110,7 +142,16 @@ class PeopleSearchNameScraper:
             self.page.goto(search_url, wait_until="networkidle")
             time.sleep(3)
             
+            # 检查是否需要处理验证
             page_content = self.page.content()
+            if self._is_verification_page(page_content):
+                logger.warning("⚠️ 浏览器页面也是验证页面")
+                logger.info("📌 需要手动完成 Cloudflare 验证")
+                logger.info("等待用户完成验证... (按任何键继续)")
+                input()
+                time.sleep(2)
+                page_content = self.page.content()
+            
             results = self._extract_results_from_html(page_content, name)
             
             return results
@@ -136,7 +177,11 @@ class PeopleSearchNameScraper:
             response = self.scraper.get(url, headers=headers, timeout=30)
             
             if response.status_code == 200:
-                logger.info(f"✓ 请求成功 (状态码: {response.status_code})")
+                logger.info(f"✓ 请求成功 (状态码: {response.status_code}, HTML长度: {len(response.text)} 字节)")
+                
+                # 输出 HTML 头部用于调试
+                logger.debug(f"HTML 头部 (前 500 字): {response.text[:500]}")
+                
                 return response.text
             else:
                 logger.warning(f"⚠️ 请求返回状态码: {response.status_code}")
@@ -156,9 +201,9 @@ class PeopleSearchNameScraper:
             logger.info("开始解析 HTML 内容...")
             logger.debug(f"HTML 长度: {len(page_html)} 字节")
             
-            # 检查是否有 Cloudflare 错误
-            if "Incompatible browser" in page_html or "security verification" in page_html:
-                logger.warning("⚠️ 页面显示安全验证错误")
+            # 检查是否是验证页面
+            if self._is_verification_page(page_html):
+                logger.warning("⚠️ 页面是验证页面，不是搜索结果")
                 return []
             
             # 检查是否有结果
@@ -169,7 +214,7 @@ class PeopleSearchNameScraper:
             # 检查是否有 "Approximate Age"
             if "Approximate Age" not in page_html:
                 logger.warning("⚠️ 页面中未找到 'Approximate Age'")
-                logger.info("可能需要手动完成 Cloudflare 验证")
+                logger.debug(f"页面内容片段: {page_html[1000:2000]}")
                 return []
             
             logger.info("✓ 页面中找到 'Approximate Age'")
@@ -260,10 +305,14 @@ class PeopleSearchNameScraper:
             self.page.goto(search_url, wait_until="networkidle")
             time.sleep(3)
             
-            # 等待可能的 Cloudflare 验证
-            self._wait_for_verification()
-            
+            # 检查是否需要处理验证
             page_content = self.page.content()
+            if self._is_verification_page(page_content):
+                logger.warning("⚠️ 需要手动完成验证")
+                logger.info("等待用户完成验证... (按任何键继续)")
+                input()
+                time.sleep(2)
+                page_content = self.page.content()
             
             if "Approximate Age" not in page_content:
                 logger.warning("⚠️ 页面中未找到搜索结果")
@@ -315,7 +364,13 @@ class PeopleSearchNameScraper:
                         detail_page = new_page_info.value
                         time.sleep(2)
                         
-                        self._wait_for_verification_on_page(detail_page)
+                        # 检查详情页是否需要验证
+                        detail_content = detail_page.content()
+                        if self._is_verification_page(detail_content):
+                            logger.warning("⚠️ 详情页需要验证")
+                            logger.info("等待验证完成... (按任何键继续)")
+                            input()
+                            time.sleep(2)
                         
                         # 提取电话
                         phones = self._extract_phones_from_detail_page(detail_page)
@@ -343,21 +398,6 @@ class PeopleSearchNameScraper:
         except Exception as e:
             logger.error(f"搜索失败: {e}")
             return []
-    
-    def _wait_for_verification(self):
-        """等待验证完成"""
-        try:
-            self.page.wait_for_load_state("networkidle", timeout=15000)
-            logger.info("✓ 页面加载完成")
-        except:
-            logger.warning("⚠️ 页面加载超时")
-    
-    def _wait_for_verification_on_page(self, page):
-        """在新页面上等待验证"""
-        try:
-            page.wait_for_load_state("networkidle", timeout=10000)
-        except:
-            pass
     
     def _extract_phones_from_detail_page(self, page) -> list:
         """从详情页提取电话号码"""
