@@ -1,191 +1,254 @@
-# 🔍 People Search Now 反向查询工具
+# 🔍 RealtyAPI Skip Trace - 批量电话号码反查工具
 
-快速查询电话号码对应的个人信息，支持批量查询和多线程加速。
+使用 **RealtyAPI Skip Trace API**，快速查询电话号码对应的个人信息，包括姓名、年龄、地址、房产价值等。
 
 ---
 
-## 📋 功能特性
+## ✨ 功能特性
 
-✅ **批量查询** - 一次查询数百个电话号码  
-✅ **多线程加速** - 3 个浏览器同时工作，速度提升 2-3 倍  
-✅ **自动化提取** - 自动获取姓名、年龄、位置信息  
-✅ **智能重试** - 网络异常自动暂停，手动刷新后继续  
-✅ **Excel 导出** - 结果自动保存为 Excel 表格  
+✅ **批量查询** - 支持查询数万个电话号码  
+✅ **多线程加速** - 可配置 workers 和 RPS，速度快 10-100 倍  
+✅ **自动提取** - 姓名、年龄、地址、房产价值、职业等  
+✅ **智能重试** - 网络异常自动重试（最多 3 次）  
+✅ **CSV 导出** - 结果自动保存为 CSV 格式  
+✅ **恢复机制** - 支持 `--resume` 继续未完成的查询  
+✅ **详细日志** - 实时显示进度和错误信息  
 
 ---
 
 ## 🚀 快速开始
 
-### 方式 1️⃣：直接打包成 .exe（推荐）
+### 前置要求
+- Python 3.8+
+- RealtyAPI 账户和 API Key（需要付费）
 
-**前提要求：** 你的电脑需要安装 Python 3.8+
+### 安装步骤
 
-**步骤：**
-
-1. **下载仓库**
+1. **克隆仓库**
    ```bash
    git clone https://github.com/maoniu322022-cell/web-query-automation.git
    cd web-query-automation
    ```
 
-2. **双击 `build.bat` 自动打包**
-   - 自动检测 Python
-   - 自动安装 PyInstaller
-   - 生成 `开始查询.exe` 文件
-
-3. **等待完成**
-   - 第一次需要 3-5 分钟
-   - 完成后会看到 `dist` 文件夹
-
-4. **复制到其他电脑**
-   ```
-   dist 文件夹
-   ├── 开始查询.exe
-   ├── scraper.py
-   └── data_handler.py
-   ```
-
----
-
-### 方式 2️⃣：直接运行 Python（开发模式）
-
-**前提要求：** 需要安装 Python 和依赖
-
-1. **安装依赖**
+2. **安装依赖**
    ```bash
    pip install -r requirements.txt
    ```
 
-2. **准备输入文件**
-   - 在项目文件夹中创建 `phones.txt`
-   - 每行一个电话号码
-   ```
-   410-390-3335
-   555-123-4567
-   888-999-0000
-   ```
-
-3. **运行查询**
+3. **配置 API Key**
    ```bash
-   python main.py
+   echo "rt_your_api_key_here" > api_key.txt
+   ```
+   - 将 `rt_your_api_key_here` 替换为您的实际 RealtyAPI Key
+   - 从 https://realtyapi.io 获取 Key
+
+4. **准备输入文件**
+   - 创建 `input.csv` 文件
+   - 第一列放电话号码（支持任何格式）
+   ```csv
+   phone
+   410-390-3335
+   (555) 123-4567
+   8889990000
+   ```
+
+5. **运行查询**
+   ```bash
+   python main.py --input input.csv --output output.csv --workers 10 --rps 10
    ```
 
 ---
 
-## 📝 使用说明
+## 📖 使用说明
 
-### 准备输入文件
+### 基本命令
 
-创建 `phones.txt` 文件，内容示例：
-```
-410-390-3335
-(555) 123-4567
-8889990000
-```
-
-支持多种格式：
-- `410-390-3335`
-- `(410) 390-3335`
-- `4103903335`
-
-### 运行程序
-
-**Windows 用户：** 双击 `开始查询.exe` 或 `开始查询.bat`
-
-**Linux/Mac 用户：** 
 ```bash
-python main.py
+python main.py --input input.csv --output output.csv --workers 10 --rps 10
 ```
 
-### 查看结果
+### 命令行参数
 
-查询完成后，自动生成 `search_results.xlsx`
+| 参数 | 默认值 | 说明 |
+|------|--------|------|
+| `--input` | `input.csv` | 输入文件路径 |
+| `--output` | `output.csv` | 输出文件路径 |
+| `--workers` | `10` | 并发线程数（2-50） |
+| `--rps` | `10.0` | 每秒请求数 |
+| `--limit` | `0` | 只查询前 N 个号码（0 = 全部） |
+| `--resume` | - | 跳过已完成的，继续未完成的 |
+| `--auth` | `api_key.txt` | API Key 文件路径 |
+| `--json` | - | 可选：输出详细 JSON 文件 |
 
-| Phone | Name | Age | Location |
-|-------|------|-----|----------|
-| 410-390-3335 | John Doe | 45 | California, USA |
+### 常用示例
+
+**快速测试（只查询前 100 个）：**
+```bash
+python main.py --input input.csv --output output.csv --limit 100
+```
+
+**高速查询（并发 20，RPS 30）：**
+```bash
+python main.py --input input.csv --output output.csv --workers 20 --rps 30
+```
+
+**恢复中断的查询：**
+```bash
+python main.py --resume
+```
+
+**输出详细 JSON 日志：**
+```bash
+python main.py --input input.csv --output output.csv --json output.json
+```
 
 ---
 
-## ⚙️ 高级配置
+## 📊 输出格式
 
-### 调整并发数
+### CSV 输出示例
 
-编辑 `main.py` 第 14 行：
-```python
-MAX_WORKERS = 3  # 改成 2-5
+| input_phone | name | age | property_value | value_source | occupation |
+|-------------|------|-----|----------------|--------------|-----------|
+| 410-390-3335 | John Doe | 45 | 450000 | zillow | Engineer |
+| 555-123-4567 | Jane Smith | 38 | 320000 | redfin | Doctor |
+
+### 查询统计
+
+查询完成后会显示：
+```
+[done] wrote output.csv
+       resolved=950  no_results=45  error=5
+       rows with property_value: 850
 ```
 
-- `2` - 低配电脑
-- `3` - 中等配置（推荐）
-- `4-5` - 高配电脑
+- **resolved** - 成功获取信息的号码
+- **no_results** - 找不到相关信息的号码
+- **error** - 查询出错的号码
+- **property_value** - 成功获取房产价值的号码
 
-### 网络异常处理
+---
 
-程序会自动暂停并提示：
-```
-⚠️ 网络连接出现问题，请检查网络或切换 VPN 节点
-✅ 切换完成后，在浏览器按 F5 刷新页面，然后按 Enter 继续...
-```
+## ⚙️ 性能优化
 
-按照提示操作即可。
+### 调整并发和速率
+
+| 场景 | workers | rps | 说明 |
+|------|---------|-----|------|
+| 低配电脑 | 5 | 5 | 稳定，额度消耗慢 |
+| 中等配置 | 10 | 10 | 平衡性能和额度 |
+| 高配电脑 | 20-30 | 20-30 | 快速，额度消耗快 |
+| 超高配置 | 50 | 50 | 最快（需要 Mega 计划） |
+
+### 预计时间
+
+按 10 workers, 10 RPS：
+- 1,000 号码 ≈ 2 分钟
+- 10,000 号码 ≈ 17 分钟
+- 45,990 号码 ≈ 77 分钟
 
 ---
 
 ## 🔧 故障排除
 
-### ❌ 错误：`Page.goto: Timeout 30000ms exceeded`
+### ❌ 错误：`ModuleNotFoundError: No module named 'requests'`
 
-**解决：** 网络不稳定或网站被限速
-- 检查网络连接
-- 切换 VPN 节点
-- 等待几分钟后重试
-
-### ❌ 错误：`Error 1015 Rate Limited`
-
-**解决：** 查询频率过快，被网站限制
-- 增加等待时间
-- 减少 `MAX_WORKERS` 数量
-- 更换 IP/VPN
-
-### ❌ 其他 Python 相关错误
-
-**检查依赖：**
+**解决：** 安装依赖
 ```bash
-pip install -r requirements.txt --upgrade
+pip install -r requirements.txt
 ```
+
+### ❌ 错误：`HTTP 402 Payment Required`
+
+**解决：** API 额度不足
+1. 访问 https://realtyapi.io 登录账户
+2. 检查剩余额度（Credits）
+3. 购买更多额度或升级套餐
+4. 重新运行 `python main.py --resume`
+
+### ❌ 错误：`UnicodeDecodeError: 'utf-8' codec can't decode byte 0xff`
+
+**解决：** API Key 文件编码问题
+```bash
+# 删除旧文件
+del api_key.txt
+
+# 重新创建
+echo rt_your_key > api_key.txt
+```
+
+### ❌ 错误：`[ERROR] phone_number: HTTP 401 Unauthorized`
+
+**解决：** API Key 无效或过期
+1. 检查 `api_key.txt` 中的 Key 是否正确
+2. 确保 Key 前缀是 `rt_` 而不是其他
+3. 从 https://realtyapi.io 复制新的 Key
+
+### ⚠️ 查询速度慢
+
+**优化方案：**
+- 增加 `--workers` 值（如从 10 改到 20）
+- 增加 `--rps` 值（如从 10 改到 30）
+- 检查网络连接
+- 升级到更高速率的套餐
 
 ---
 
-## 📦 依赖包
+## 📚 RealtyAPI 套餐信息
+
+| 套餐 | 价格 | 查询数 | 速率 |
+|------|------|--------|------|
+| Starter | $99/月 | 1,000 | 10 RPS |
+| Pro | $299/月 | 5,000 | 20 RPS |
+| Mega | $999/月 | 25,000 | 50 RPS |
+
+*注：价格和额度可能变更，请访问 https://realtyapi.io 确认*
+
+---
+
+## 📝 依赖包
 
 ```
-playwright>=1.40.0
-beautifulsoup4>=4.12.0
+requests>=2.28.0
 openpyxl>=3.1.0
 ```
 
-如果手动安装：
+手动安装：
 ```bash
-pip install playwright beautifulsoup4 openpyxl
-playwright install
+pip install requests>=2.28.0
 ```
 
 ---
 
 ## 💡 常见问题
 
-**Q: 查询结果不准确？**  
-A: 网站数据可能不完整或已更新，多次查询可能得到不同结果。
+**Q: 查询结果准确度如何？**  
+A: 准确度约 85-90%，取决于数据库的完整性和最新性。某些号码可能没有记录。
 
-**Q: 能查询其他国家的号码？**  
-A: 可以尝试，但网站主要针对美国号码。
+**Q: 支持国内手机号吗？**  
+A: 不支持，RealtyAPI 只支持美国号码（10 位）。
 
-**Q: 支持国内 11 位号码吗？**  
-A: 不支持，网站只支持美国格式。
+**Q: 能查询其他信息吗？**  
+A: 可以，RealtyAPI 还支持姓名反查、地址查询等其他功能（需要集成相应 API）。
 
-**Q: 多久更新一次？**  
-A: 网站数据实时更新，查询结果是最新的。
+**Q: 查询过程中断了怎么办？**  
+A: 运行 `python main.py --resume` 会自动跳过已完成的，继续查询剩余号码。
+
+**Q: 怎么只查询部分号码测试？**  
+A: 使用 `--limit 100` 只查询前 100 个。
+
+**Q: 支持代理/VPN 吗？**  
+A: 代码不支持代理，但 RealtyAPI 服务器在全球，通常不需要 VPN。
+
+---
+
+## 🔐 隐私与安全
+
+⚠️ **重要提示：**
+- 请确保 `api_key.txt` 被添加到 `.gitignore`（已默认添加）
+- 不要将包含 API Key 的文件上传到公开仓库
+- 仅用于合法目的（数据分析、营销研究等）
+- 遵守当地法律和 RealtyAPI 的服务条款
 
 ---
 
@@ -198,10 +261,11 @@ MIT License - 自由使用和修改
 ## 🤝 反馈与支持
 
 遇到问题？
-- 提交 Issue
-- 发送邮件至 maoniu322022@gmail.com
+- 提交 Issue：https://github.com/maoniu322022-cell/web-query-automation/issues
+- 发送邮件：maoniu322022@gmail.com
 
 ---
 
-**最后更新：** 2026-07-01  
-**版本：** 2.0 (多线程 + 自动打包)
+**最后更新：** 2026-07-23  
+**版本：** 3.0 (RealtyAPI Skip Trace)  
+**状态：** ✅ 生产级别
