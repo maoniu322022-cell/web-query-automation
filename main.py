@@ -5,7 +5,7 @@ Batch skip-trace + property-value enrichment.
 Run:
     pip install -r requirements.txt
     echo "rt_your_key_here" > api_key.txt
-    python main.py --input input.csv --output output.csv --workers 10 --rps 10
+    python main.py --input input.csv --output output.csv --workers 150 --rps 150
 
 Resume a half-finished run (skips phones already in output.csv):
     python main.py --resume
@@ -364,9 +364,9 @@ def main():
     ap.add_argument("--input", default="input.csv")
     ap.add_argument("--output", default="output.csv")
     ap.add_argument("--json", dest="json_out", default="", help="optional lossless JSON output path")
-    ap.add_argument("--workers", type=int, default=10)
-    ap.add_argument("--rps", type=float, default=10.0,
-                    help="global requests/sec cap (Mega plan allows up to 50)")
+    ap.add_argument("--workers", type=int, default=150)
+    ap.add_argument("--rps", type=float, default=150.0,
+                    help="global requests/sec cap")
     ap.add_argument("--limit", type=int, default=0, help="process only the first N phones (0 = all)")
     ap.add_argument("--resume", action="store_true", help="skip phones already present in --output")
     ap.add_argument("--auth", default=DEFAULT_AUTH_FILE,

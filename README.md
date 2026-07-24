@@ -54,7 +54,7 @@
 
 5. **运行查询**
    ```bash
-   python main.py --input input.csv --output output.csv --workers 10 --rps 10
+   python main.py --input input.csv --output output.csv --workers 150 --rps 150
    ```
 
 ---
@@ -64,7 +64,7 @@
 ### 基本命令
 
 ```bash
-python main.py --input input.csv --output output.csv --workers 10 --rps 10
+python main.py --input input.csv --output output.csv --workers 150 --rps 150
 ```
 
 ### 命令行参数
@@ -73,8 +73,8 @@ python main.py --input input.csv --output output.csv --workers 10 --rps 10
 |------|--------|------|
 | `--input` | `input.csv` | 输入文件路径 |
 | `--output` | `output.csv` | 输出文件路径 |
-| `--workers` | `10` | 并发线程数（2-50） |
-| `--rps` | `10.0` | 每秒请求数 |
+| `--workers` | `150` | 并发线程数 |
+| `--rps` | `150.0` | 每秒请求数 |
 | `--limit` | `0` | 只查询前 N 个号码（0 = 全部） |
 | `--resume` | - | 跳过已完成的，继续未完成的 |
 | `--auth` | `api_key.txt` | API Key 文件路径 |
@@ -87,9 +87,9 @@ python main.py --input input.csv --output output.csv --workers 10 --rps 10
 python main.py --input input.csv --output output.csv --limit 100
 ```
 
-**高速查询（并发 20，RPS 30）：**
+**高速查询（并发 150，RPS 150）：**
 ```bash
-python main.py --input input.csv --output output.csv --workers 20 --rps 30
+python main.py --input input.csv --output output.csv --workers 150 --rps 150
 ```
 
 **恢复中断的查询：**
@@ -136,16 +136,16 @@ python main.py --input input.csv --output output.csv --json output.json
 | 场景 | workers | rps | 说明 |
 |------|---------|-----|------|
 | 低配电脑 | 5 | 5 | 稳定，额度消耗慢 |
-| 中等配置 | 10 | 10 | 平衡性能和额度 |
-| 高配电脑 | 20-30 | 20-30 | 快速，额度消耗快 |
-| 超高配置 | 50 | 50 | 最快（需要 Mega 计划） |
+| 中等配置 | 50 | 50 | 平衡性能和额度 |
+| 高配电脑 | 100 | 100 | 快速，额度消耗快 |
+| 超高配置 | 150 | 150 | 最快 |
 
 ### 预计时间
 
-按 10 workers, 10 RPS：
-- 1,000 号码 ≈ 2 分钟
-- 10,000 号码 ≈ 17 分钟
-- 45,990 号码 ≈ 77 分钟
+按 150 workers, 150 RPS：
+- 1,000 号码 ≈ 1 分钟以内
+- 10,000 号码 ≈ 10 分钟左右
+- 45,990 号码 ≈ 60 分钟内（视网络与API响应而定）
 
 ---
 
@@ -187,8 +187,8 @@ echo rt_your_key > api_key.txt
 ### ⚠️ 查询速度慢
 
 **优化方案：**
-- 增加 `--workers` 值（如从 10 改到 20）
-- 增加 `--rps` 值（如从 10 改到 30）
+- 增加 `--workers` 值（如从 50 改到 150）
+- 增加 `--rps` 值（如从 50 改到 150）
 - 检查网络连接
 - 升级到更高速率的套餐
 
@@ -266,6 +266,6 @@ MIT License - 自由使用和修改
 
 ---
 
-**最后更新：** 2026-07-23  
-**版本：** 3.0 (RealtyAPI Skip Trace)  
+**最后更新：** 2026-07-24  
+**版本：** 3.1 (RealtyAPI Skip Trace)  
 **状态：** ✅ 生产级别
